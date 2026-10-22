@@ -1,0 +1,72 @@
+---
+import { siteConfig, content } from '../config';
+import '@fontsource-variable/onest';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import CommandPalette from '../components/CommandPalette.astro';
+import AmbientBackground from '../components/AmbientBackground.astro';
+interface Props { title?: string; noindex?: boolean; }
+const { title = `${siteConfig.name} | ${siteConfig.role}`, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, siteConfig.url);
+const ogImage = new URL('/og.png', siteConfig.url);
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteConfig.name,
+  jobTitle: siteConfig.role,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  sameAs: [siteConfig.github, siteConfig.telegram],
+};
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f4f4f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#151518" media="(prefers-color-scheme: dark)" />
+    <script is:inline>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('akhan-theme'); } catch {}
+        if (theme !== 'light' && theme !== 'dark') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={siteConfig.description} />
+    <meta name="author" content={siteConfig.name} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${siteConfig.name}. ${siteConfig.role}.`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={siteConfig.description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(person).replace(/</g, '\\u003c')} />
+  </head>
+  <body id="top">
+    <AmbientBackground />
+    <a class="skip-link" href="#main">{content.ui.skip}</a>
+    <Header />
+    <main class="page-width" id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer page-width">
+      <p>© {siteConfig.copyrightYear} {siteConfig.name}</p>
+      <div><span>{content.ui.builtWith}</span></div>
+    </footer>
+    <CommandPalette />
+    <script src="../scripts/interactions.ts"></script>
+  </body>
+</html>

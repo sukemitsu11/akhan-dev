@@ -1,0 +1,394 @@
+/* Refined layout, original palette from styles.css, Oswald + Manrope. */
+.container { width: min(1280px, calc(100% - 112px)); }
+.section { padding: 120px 0; }
+h1, h2 { font-weight: 400; letter-spacing: -2.4px; line-height: 1.16; }
+h2 { font-size: clamp(36px, 3.65vw, 52px); }
+.eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 2.4px; }
+.header { height: 100px;   }
+.logo { font-family: 'Oswald', sans-serif; font-weight: 400; letter-spacing: .6px; font-size: 28px; }
+.logo small {  font-size: 7px; letter-spacing: 2.3px; }
+.nav { gap: 33px; font-size: 11px; font-weight: 500;  }
+.header-phone { font-weight: 500; letter-spacing: .3px; }
+.header-phone small {  font-size: 9px; }
+.hero {  min-height: 760px; }
+.hero-photo { inset: 0 0 76px 38%; }
+.hero-photo img {  object-position: 50% 52%; }
+.hero-content { padding-top: 116px; }
+.hero .eyebrow {  font-size: 9px; }
+.status-dot {  width: 5px; height: 5px;  }
+.hero h1 { font-size: clamp(70px, 6.65vw, 96px); line-height: 1.09; letter-spacing: -5.5px; margin: 35px 0 30px; max-width: 680px; }
+.hero-description { font-size: 14px; font-weight: 400;  line-height: 1.95; margin-bottom: 40px; }
+.button { border-radius: 3px; min-height: 57px; padding: 18px 27px; font-size: 11px; font-weight: 600; transition: background .2s, color .2s; }
+.button-blue:hover {  transform: none; }
+.hero-actions { gap: 35px; }
+.hero-secondary { font-size: 11px;  font-weight: 400; }
+.hero-location { margin-top: 45px;  letter-spacing: .2px; }
+.hero-bottom { height: 76px;  }
+.hero-bottom .container { font-size: 9px; letter-spacing: 2.4px; gap: 37px;  }
+.hero-bottom i {  width: 3px; height: 3px; }
+.trust-inner { padding-block: 40px; }
+.trust-rating b, .trust-item b { font-family: 'Manrope', sans-serif; font-size: 32px; font-weight: 400; letter-spacing: -1.8px; }
+.trust-rating b span {  font-size: 17px; }
+.trust-item b > span {  font-size: 18px; }
+.trust-inner div div, .trust-rating > div { font-weight: 500; }
+.section-heading { margin-bottom: 50px; }
+.section-heading > p { font-size: 13px;  }
+.service-grid { gap: 18px; }
+.service-card {   padding: 34px 26px 28px; min-height: 406px; border-radius: 4px; }
+.service-card:hover { transform: none;    }
+.service-icon {  width: 42px; height: 42px; margin-bottom: 35px; }
+.service-icon svg { stroke-width: 1.25; }
+.service-tag {  font-size: 8px; font-weight: 400; letter-spacing: 1.2px; }
+.service-card h3 { font-size: 20px; font-weight: 500; letter-spacing: -.6px; margin: 15px 0 17px; }
+.service-card p {  font-size: 12px; line-height: 1.9; }
+.service-card li {    border-radius: 2px; font-size: 8px; font-weight: 400; }
+.service-card > a { font-size: 10px;  font-weight: 500; padding-top: 22px; }
+.services-note { gap: 24px; margin-top: 32px; }
+.services-note > span { font-weight: 400;  }
+.services-note p { font-size: 11px; }
+.services-note a {  font-weight: 500; }
+.text-link { font-weight: 500;  font-size: 11px; }
+.gallery-filters { gap: 20px; margin-bottom: 30px; }
+.gallery-filters button {  border: 0; border-bottom: 1px solid transparent; border-radius: 0; padding: 11px 0;  font-size: 11px; font-weight: 400; }
+.gallery-filters button span {  font-size: 9px; }
+.gallery-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+.work-card { height: 445px; border-radius: 4px;  }
+.work-card img {  object-position: 50% 58%; }
+.work-card:hover img { transform: scale(1.025); }
+.work-label { left: 30px; bottom: 30px; }
+.work-label small { font-weight: 400; font-size: 9px;  letter-spacing: 2px; margin-bottom: 12px; }
+.work-label strong { font-size: 23px; font-weight: 400; letter-spacing: -.7px; }
+.work-open { border-radius: 3px;  width: 39px; height: 39px; bottom: 31px; right: 30px;  font-size: 19px; }
+.estimate-section {  padding: 108px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.estimate-section:before { display: none; }
+.estimate-grid { gap: 100px; align-items: center; }
+.estimate-copy { padding-top: 0; }
+.estimate-copy .eyebrow {  font-weight: 400; letter-spacing: 2px; }
+.estimate-copy h2 { font-size: clamp(43px, 4.3vw, 60px); letter-spacing: -2.5px; line-height: 1.18; margin-top: 29px; }
+.estimate-copy > p {  font-size: 13px; margin-top: 29px; line-height: 2; }
+.estimate-info {  max-width: 400px; gap: 24px; }
+.estimate-info > span {  font-size: 26px; }
+.estimate-info p {  font-size: 11px; }
+.estimate-form {   border-radius: 4px; padding: 40px; }
+.form-heading h3 { font-weight: 500; font-size: 21px; }
+.form-heading > span {   border-radius: 2px; font-size: 9px; }
+.service-choice legend, .field-label {  font-weight: 400; font-size: 11px; }
+.choice-grid span {  border-radius: 3px; font-weight: 400;  }
+.field {    border-radius: 3px; font-size: 12px; min-height: 52px;  }
+.price-explanation {  font-size: 11px; }
+.button-dark {   font-weight: 600; }
+.form-footnote {  font-size: 9px; }
+.request-result h4 { font-weight: 500; }
+.request-result > p:not(.copy-status) {  font-size: 12px; }
+.result-actions {  font-size: 10px; }
+.guarantee h2 { font-size: 44px; }
+.section-intro {  font-size: 13px; }
+.process-list article { padding: 30px 0; gap: 30px; }
+.process-list article > span {  font-weight: 400; font-size: 20px; letter-spacing: -1px; }
+.process-list h3 { font-weight: 500; font-size: 17px; }
+.process-list p {  font-size: 12px; }
+.review-score > b { font-size: 48px; font-weight: 400; letter-spacing: -2px; }
+.review-score > div > span {  font-size: 12px; }
+.review-card {   border-radius: 4px; padding: 32px 28px; }
+.review-stars {  font-size: 10px; letter-spacing: 2px; }
+.review-card h3 {  font-weight: 400; }
+.review-card blockquote { font-size: 21px; font-weight: 400; line-height: 1.6; letter-spacing: -.6px; }
+.review-card > p {  font-size: 11px; }
+.review-author > div { font-weight: 400;  font-size: 10px; }
+.faq {  padding-block: 108px; }
+.faq h2 { font-size: 42px; }
+.faq-list summary { font-weight: 400; font-size: 13px; padding: 24px 0; }
+.faq-list details p {  font-size: 12px; }
+.contacts {  padding: 108px 0;  }
+.contacts h2 { font-size: clamp(32px, 3.1vw, 43px); font-weight: 400; letter-spacing: -1.8px; line-height: 1.25; }
+.contact-phone { font-weight: 400; letter-spacing: -.8px; font-size: 30px; margin-top: 36px; }
+.contact-links { font-weight: 400;  }
+.contact-map {   border-radius: 4px; }
+.map-pin {   border-radius: 3px; font-size: 18px; font-weight: 500;  }
+.map-link strong { font-weight: 500; }
+.footer {    padding: 32px 0; }
+.footer .logo { font-size: 23px; }
+.photo-dialog {   border-radius: 4px; }
+.dialog-caption h3 { font-weight: 400; }
+.dialog-close { border-radius: 3px; }
+
+@media (min-width:1600px) {
+  .hero { min-height: 840px; }
+  .hero-content { padding-top: 140px; }
+  .hero h1 { font-size: 106px; }
+  .hero-photo { left: 38%; }
+}
+
+@media (max-width:1150px) {
+  .container { width: calc(100% - 72px); }
+  .nav { gap: 23px; }
+  .hero { min-height: 730px; }
+  .hero h1 { font-size: 80px; letter-spacing: -4px; }
+  .hero-content { padding-top: 100px; }
+  .service-card { padding: 30px; min-height: 345px; }
+  .service-card h3 { font-size: 23px; }
+  .service-icon { margin-bottom: 24px; }
+  .estimate-grid { gap: 55px; }
+  .estimate-form { padding: 30px; }
+  .work-card { height: 405px; }
+  .review-card { padding: 26px 23px; }
+  .review-card blockquote { font-size: 18px; }
+}
+@media (max-width:900px) {
+  .container { width: calc(100% - 48px); }
+  .header { height: 86px; }
+  .nav { top: 86px;   }
+  .section { padding: 85px 0; }
+  .hero { min-height: 720px; }
+  .hero-content { padding-top: 96px; }
+  .hero h1 { font-size: 72px; }
+  .hero-photo { left: 25%; }
+  .hero-bottom .container { gap: 24px; font-size: 8px; letter-spacing: 1.7px; }
+  .hero-actions { gap: 22px; }
+  .trust-item b, .trust-rating b { font-size: 27px; }
+  .gallery-grid { gap: 18px; }
+  .work-card { height: 355px; }
+  .work-label { left: 23px; bottom: 26px; }
+  .work-label strong { font-size: 19px; }
+  .work-open { right: 22px; bottom: 26px; }
+  .estimate-section { padding: 80px 0; }
+  .estimate-grid { gap: 32px; }
+  .estimate-copy h2 { font-size: 42px; letter-spacing: -1.9px; }
+  .estimate-form { padding: 25px; }
+  .form-heading h3 { font-size: 18px; }
+  .guarantee h2 { font-size: 36px; }
+  .review-card { padding: 23px 20px; }
+  .review-card blockquote { font-size: 17px; }
+  .review-author > div { font-size: 8px; }
+  .faq h2 { font-size: 34px; }
+  .contacts { padding: 85px 0; }
+  .contacts h2 { font-size: 32px; }
+  .contact-phone { font-size: 24px; }
+}
+@media (max-width:640px) {
+  .container { width: calc(100% - 40px); }
+  .section { padding: 68px 0; }
+  .header { height: 80px; }
+  .logo { font-size: 25px; }
+  .logo small { font-size: 6px; letter-spacing: 1.6px; }
+  .header-phone { font-size: 9px; letter-spacing: 0; }
+  .header-phone small { font-size: 7px; }
+  .nav { top: 80px; }
+  .hero { min-height: 810px; }
+  .hero-content { padding-top: 60px; }
+  .hero .eyebrow { font-size: 8px; letter-spacing: 1.7px; }
+  .hero h1 { font-size: clamp(48px, 13.5vw, 72px); font-weight: 400; letter-spacing: -2.8px; line-height: 1.1; margin: 31px 0 23px; }
+  .hero-description { font-size: 12px;  line-height: 1.9; margin-bottom: 28px; }
+  .hero-photo { inset: 298px 0 66px; }
+  .hero-photo img { object-position: 50% 50%;  }
+  .hero-actions { gap: 20px; }
+  .hero-actions .button { min-height: 52px; font-size: 10px; padding: 17px 22px; }
+  .hero-secondary { font-size: 10px; }
+  .hero-location {  margin-top: 26px; font-size: 8px; }
+  .hero-bottom { height: 66px; }
+  .hero-bottom .container { gap: 12px; font-size: 7px; letter-spacing: .8px; }
+  .trust-inner { padding-block: 30px; }
+  .trust-rating b { font-size: 33px; }
+  .trust-item b { font-size: 29px; }
+  .trust-item:last-child { padding-left: 22px; }
+  h2, .section-heading h2 { font-size: 34px; letter-spacing: -1.4px; margin-top: 19px; line-height: 1.22; }
+  .section-heading { margin-bottom: 30px; }
+  .section-heading > p { font-size: 12px; margin-top: 25px; }
+  .eyebrow { font-size: 8px; letter-spacing: 1.8px; }
+  .service-card { min-height: 0; padding: 28px 24px; }
+  .service-card h3 { font-size: 22px; font-weight: 500; }
+  .service-icon { width: 39px; height: 39px; margin-bottom: 0; }
+  .service-card p { font-size: 12px; }
+  .service-card li { font-size: 8px; }
+  .service-card > a { padding-top: 19px; }
+  .services-note { gap: 12px; margin-top: 28px; }
+  .services-note p { font-size: 11px; }
+  .works .section-heading .text-link { margin-top: 25px; }
+  .gallery-filters { gap: 18px; margin-bottom: 24px; }
+  .gallery-filters button { font-size: 10px; padding: 10px 0; }
+  .gallery-grid { gap: 16px; grid-template-columns: 1fr; }
+  .work-card, .work-card-wide { height: 350px; grid-column: auto !important; }
+  .work-label { left: 24px; bottom: 27px; max-width: calc(100% - 80px); }
+  .work-label strong { font-size: 20px; font-weight: 400; }
+  .work-label small { font-size: 8px; margin-bottom: 10px; }
+  .work-open { top: auto; right: 24px; bottom: 27px; width: 33px; height: 33px; }
+  .estimate-section { padding: 68px 0; }
+  .estimate-copy h2 { font-size: 40px; letter-spacing: -1.7px; margin-top: 26px; }
+  .estimate-copy > p { font-size: 12px; margin-top: 24px; }
+  .estimate-info { margin-bottom: 33px; }
+  .estimate-info p { font-size: 11px; }
+  .estimate-form { padding: 27px 22px; }
+  .form-heading h3 { font-size: 18px; }
+  .form-heading > span { font-size: 8px; }
+  .field { font-size: 11px; }
+  .price-explanation { font-size: 10px; }
+  .form-footnote { font-size: 8px; }
+  .guarantee h2 { font-size: 34px; }
+  .process-list article { gap: 22px; padding: 24px 0; }
+  .process-list article > span { font-size: 20px; }
+  .process-list h3 { font-size: 16px; font-weight: 500; }
+  .process-list p { font-size: 12px; }
+  .review-score { margin-top: 30px; }
+  .review-card { padding: 28px 24px; }
+  .review-card blockquote { font-size: 20px; font-weight: 400; }
+  .review-card > p { font-size: 12px; }
+  .review-author > div { font-size: 10px; }
+  .faq { padding-block: 68px; }
+  .faq h2 { font-size: 34px; }
+  .faq-list { margin-top: 30px; }
+  .faq-list summary { font-size: 12px; }
+  .contacts { padding: 68px 0; }
+  .contacts h2 { font-size: 32px; line-height: 1.3; letter-spacing: -1.3px; }
+  .contact-phone { font-size: 26px; }
+  .contact-links { font-size: 10px; }
+  .footer { padding-block: 29px; }
+}
+
+/* Oswald gives the headings character; Manrope keeps the interface calm. */
+h2 { font-family: 'Oswald', 'Arial Narrow', sans-serif; text-transform: uppercase; font-weight: 500; letter-spacing: -.9px; line-height: 1.13; font-size: clamp(40px, 4vw, 58px); }
+.hero h1 { font-family: 'Manrope', Arial, sans-serif; font-weight: 400; letter-spacing: -4.6px; }
+.hero h1 .hero-title-modern { color: #fff; }
+.hero h1 .hero-title-display { font-family: 'Oswald', 'Arial Narrow', sans-serif; font-weight: 600; text-transform: uppercase; font-size: 1.12em; letter-spacing: -1.8px; }
+.button { justify-content: center; gap: 0; }
+.hero-actions .button { min-width: 230px; }
+.service-card h3 { font-family: 'Manrope', Arial, sans-serif; font-weight: 700; }
+.service-card > a { font-weight: 600; }
+.gallery-filters button { color: var(--muted); }
+.gallery-filters button.is-active { background: none; color: var(--ink); border-color: var(--blue); }
+.gallery-filters button:hover { color: var(--blue); }
+.work-open svg { width: 18px; height: 18px; stroke-width: 1.7; }
+.estimate-copy h2, .contacts h2 { font-family: 'Manrope', Arial, sans-serif; text-transform: none; font-weight: 400; letter-spacing: -2px; }
+.estimate-copy h2 { font-size: clamp(43px, 4.3vw, 60px); }
+.contacts h2 { font-size: clamp(32px, 3.1vw, 43px); }
+.trust-rating b, .trust-item b, .review-score > b, .process-list article > span, .contact-phone { font-family: 'Oswald', 'Arial Narrow', sans-serif; font-weight: 500; letter-spacing: -.5px; }
+.trust-rating b, .trust-item b { font-size: 36px; }
+.review-author > a { font-size: 10px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.review-card blockquote { font-family: 'Manrope', Arial, sans-serif; font-weight: 500; }
+.form-heading h3, .process-list h3 { font-weight: 600; }
+.field-label, .service-choice legend, .faq-list summary { font-weight: 600; }
+.guarantee h2 { font-size: 52px; }
+.faq h2 { font-size: 46px; }
+@media(max-width:900px) {
+  .trust-rating b, .trust-item b { font-size: 31px; }
+  .guarantee h2 { font-size: 42px; }
+  .faq h2 { font-size: 38px; }
+  .estimate-copy h2 { font-size: 42px; }
+  .contacts h2 { font-size: 32px; }
+}
+@media(max-width:640px) {
+  h2, .section-heading h2, .guarantee h2, .faq h2 { font-size: 39px; letter-spacing: -.6px; line-height: 1.15; }
+  .hero h1 { letter-spacing: -2.7px; }
+  .hero h1 .hero-title-display { letter-spacing: -.8px; }
+  .hero-actions .button { min-width: 210px; }
+  .estimate-copy h2 { font-size: 40px; letter-spacing: -1.7px; }
+  .contacts h2 { font-size: 32px; letter-spacing: -1.3px; }
+  .trust-rating b { font-size: 38px; }
+  .trust-item b { font-size: 32px; }
+}
+
+/* Automotive service icons and a more deliberate consultation flow. */
+.service-icon { width: 64px; height: 48px; margin-bottom: 30px; }
+.service-icon svg { stroke-width: 1.7; }
+.estimate-section { padding: 100px 0; }
+.estimate-grid { grid-template-columns: .95fr 1.05fr; gap: 72px; align-items: center; }
+.estimate-copy .eyebrow { font-size: 9px; letter-spacing: 1.8px; }
+.estimate-copy h2 { font-size: clamp(44px, 4vw, 57px); margin-top: 26px; line-height: 1.2; letter-spacing: -2.1px; }
+.estimate-copy > p { font-size: 14px; line-height: 1.9; max-width: 425px; margin: 26px 0 30px; color: #e2eaff; }
+.estimate-editorial { display: grid; grid-template-columns: 142px 1fr; max-width: 460px; background: #1944c4; border: 1px solid #ffffff38; border-radius: 9px; overflow: hidden; margin-bottom: 25px; }
+.estimate-editorial > img { width: 100%; height: 186px; object-fit: cover; object-position: 50% 55%; }
+.estimate-editorial > div { padding: 25px 22px; align-self: center; }
+.estimate-editorial small { display: block; font-size: 7px; letter-spacing: 1.2px; color: #c7d5ff; margin-bottom: 14px; }
+.estimate-editorial strong { display: block; font-size: 17px; line-height: 1.55; font-weight: 500; letter-spacing: -.3px; }
+.estimate-editorial p { font-size: 10px; line-height: 1.8; color: #d0dcff; margin: 12px 0 0; }
+.estimate-info { max-width: 460px; border: 0; padding: 0; }
+.estimate-info p { font-size: 11px; line-height: 1.9; color: #d5e0ff; max-width: 430px; }
+.estimate-form { padding: 38px; border: 1px solid #ffffff80; border-radius: 12px; box-shadow: 0 22px 65px #092a8d38; }
+.form-heading { margin-bottom: 26px; align-items: center; }
+.form-kicker { display: block; color: var(--muted); font-size: 8px; font-weight: 600; letter-spacing: 1.5px; margin-bottom: 10px; }
+.form-heading h3 { font-size: 25px; font-weight: 600; letter-spacing: -.8px; }
+.form-heading > span { font-size: 9px; padding: 7px 10px; border-radius: 20px; background: #f8f9fc; }
+.form-step { width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 50%; background: #edf2ff; color: var(--blue); font-size: 9px; font-weight: 700; margin-right: 7px; vertical-align: middle; }
+.service-choice { margin-bottom: 24px; }
+.service-choice legend { font-size: 11px; font-weight: 600; margin-bottom: 13px; }
+.choice-grid { gap: 10px; }
+.choice-grid .choice-card { display: grid; grid-template-columns: 36px 1fr; column-gap: 12px; row-gap: 5px; position: relative; padding: 18px 16px; min-height: 92px; text-align: left; border-radius: 7px; border-color: #e0e6f0; background: #fff; }
+.choice-card svg { width: 36px; height: 36px; grid-row: 1 / 3; align-self: center; color: #7e8da6; stroke-width: 1.8; }
+.choice-card strong { font-size: 12px; line-height: 1.4; font-weight: 600; color: var(--ink); align-self: end; letter-spacing: -.2px; }
+.choice-card small { font-size: 8px; line-height: 1.5; font-weight: 400; color: var(--muted); }
+.choice-grid input:checked + .choice-card { border-color: var(--blue); background: #f1f5ff; box-shadow: inset 0 0 0 1px var(--blue); }
+.choice-grid input:checked + .choice-card svg { color: var(--blue); }
+.choice-grid input:checked + .choice-card:after { content: '✓'; position: absolute; top: 7px; right: 9px; font-size: 10px; color: var(--blue); }
+.estimate-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.estimate-fields > div { min-width: 0; }
+.estimate-fields .field-label { font-size: 10px; font-weight: 600; margin-bottom: 12px; min-height: 24px; white-space: nowrap; }
+.estimate-fields .field { min-height: 54px; border-radius: 7px; font-size: 11px; padding-inline: 13px; background: #f8faff; margin-bottom: 22px; }
+.estimate-selection { display: flex; justify-content: space-between; gap: 20px; align-items: center; border: 1px solid #e6ebf4; border-left: 3px solid var(--blue); background: #f4f7fc; border-radius: 7px; padding: 17px 19px; margin: 0 0 24px; }
+.estimate-selection small { display: block; font-size: 7px; letter-spacing: 1.4px; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+.estimate-selection strong { display: block; font-size: 12px; font-weight: 600; line-height: 1.6; }
+.estimate-selection p { font-size: 10px; color: var(--muted); margin: 3px 0 0; line-height: 1.6; }
+.selection-price { text-align: right; font-size: 10px; line-height: 1.8; color: #6b7890; }
+.estimate-form > .button { min-height: 57px; border-radius: 7px; font-size: 12px; }
+.form-footnote { font-size: 9px; margin-top: 14px; line-height: 1.8; }
+@media(max-width:1150px) {
+  .estimate-grid { gap: 45px; grid-template-columns: .9fr 1.1fr; }
+  .estimate-form { padding: 29px; }
+  .estimate-copy h2 { font-size: 44px; }
+  .estimate-editorial { grid-template-columns: 116px 1fr; }
+  .estimate-editorial > div { padding: 22px 18px; }
+  .estimate-editorial strong { font-size: 15px; }
+  .choice-grid .choice-card { padding: 16px 12px; column-gap: 10px; grid-template-columns: 31px 1fr; }
+  .choice-card svg { width: 31px; height: 31px; }
+  .choice-card strong { font-size: 11px; }
+  .choice-card small { font-size: 7px; }
+  .estimate-fields { gap: 12px; }
+  .estimate-fields .field-label { font-size: 9px; }
+}
+@media(max-width:900px) {
+  .estimate-grid { display: block; }
+  .estimate-copy { max-width: 680px; margin-bottom: 36px; }
+  .estimate-copy h2 { font-size: 48px; }
+  .estimate-copy > p { max-width: 570px; }
+  .estimate-editorial { max-width: 570px; grid-template-columns: 160px 1fr; }
+  .estimate-editorial > img { height: 155px; }
+  .estimate-info { max-width: 570px; }
+  .estimate-info p { max-width: none; }
+  .estimate-form { padding: 34px; }
+  .choice-grid .choice-card { grid-template-columns: 42px 1fr; padding: 20px; }
+  .choice-card svg { width: 42px; height: 42px; }
+  .choice-card strong { font-size: 14px; }
+  .choice-card small { font-size: 10px; }
+  .estimate-fields .field-label { font-size: 11px; }
+}
+@media(max-width:640px) {
+  .service-icon { width: 59px; height: 45px; margin-bottom: 0; }
+  .estimate-section { padding: 66px 0; }
+  .estimate-copy { margin-bottom: 30px; }
+  .estimate-copy .eyebrow { font-size: 7px; letter-spacing: 1.4px; }
+  .estimate-copy h2 { font-size: clamp(30px, 8.7vw, 41px); letter-spacing: -1.3px; margin-top: 22px; }
+  .estimate-copy > p { font-size: 12px; line-height: 1.9; margin: 22px 0 26px; }
+  .estimate-editorial { grid-template-columns: 106px 1fr; margin-bottom: 20px; border-radius: 7px; }
+  .estimate-editorial > img { height: 175px; }
+  .estimate-editorial > div { padding: 18px 14px; }
+  .estimate-editorial small { font-size: 6px; letter-spacing: .7px; margin-bottom: 11px; }
+  .estimate-editorial strong { font-size: 14px; }
+  .estimate-editorial p { font-size: 9px; margin-top: 8px; }
+  .estimate-info { margin-bottom: 0; }
+  .estimate-info p { font-size: 10px; }
+  .estimate-form { padding: 26px 20px; border-radius: 10px; }
+  .form-kicker { font-size: 7px; letter-spacing: 1px; margin-bottom: 9px; }
+  .form-heading h3 { font-size: 21px; }
+  .form-heading > span { font-size: 7px; padding: 6px 8px; }
+  .form-heading { gap: 8px; margin-bottom: 23px; }
+  .choice-grid { gap: 8px; }
+  .choice-grid .choice-card { display: block; padding: 14px 10px; min-height: 112px; }
+  .choice-card svg { width: 37px; height: 29px; display: block; margin-bottom: 9px; }
+  .choice-card strong { display: block; font-size: 11px; margin-bottom: 4px; }
+  .choice-card small { display: block; font-size: 7px; line-height: 1.6; }
+  .estimate-fields { grid-template-columns: 1fr; gap: 0; }
+  .estimate-fields .field-label { font-size: 10px; }
+  .estimate-fields .field { min-height: 53px; font-size: 11px; margin-bottom: 20px; }
+  .estimate-selection { padding: 15px; gap: 12px; margin-bottom: 21px; }
+  .estimate-selection strong { font-size: 11px; }
+  .selection-price { font-size: 8px; }
+  .form-footnote { font-size: 8px; margin-top: 13px; }
+}

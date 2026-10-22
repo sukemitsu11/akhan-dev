@@ -1,0 +1,19 @@
+---
+import { content } from '../config';
+const { ui } = content;
+---
+<button
+  class="theme-toggle utility-button"
+  type="button"
+  data-theme-toggle
+  data-light-label={ui.light}
+  data-dark-label={ui.dark}
+  data-light-aria={ui.lightTheme}
+  data-dark-aria={ui.darkTheme}
+  aria-label={ui.toggleTheme}
+  aria-pressed="false"
+  hidden
+>
+  <span class="theme-symbol" aria-hidden="true"></span>
+  <span data-theme-label>{ui.dark}</span>
+</button>

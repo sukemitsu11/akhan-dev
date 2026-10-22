@@ -1,0 +1,19 @@
+---
+import { siteConfig, content } from '../config';
+const { ui } = content;
+---
+<dialog id="command-palette" class="command-palette" aria-labelledby="command-title">
+  <div class="palette-top"><h2 id="command-title">{ui.commandTitle}</h2><button type="button" class="utility-button" data-command-close aria-label={ui.close}>Esc</button></div>
+  <label class="sr-only" for="command-search">{ui.commandSearch}</label>
+  <input id="command-search" type="search" placeholder={ui.commandPlaceholder} autocomplete="off" spellcheck="false" />
+  <ul class="command-list" aria-label={ui.commands}>
+    <li><a href="/#projects" data-command-item>{ui.goProjects}</a></li>
+    <li><a href="/#about" data-command-item>{ui.goAbout}</a></li>
+    <li><a href="/#contact" data-command-item>{ui.goContact}</a></li>
+    <li><a href={siteConfig.github} target="_blank" rel="noopener noreferrer" data-command-item>{ui.openGithub}</a></li>
+    <li><a href={siteConfig.telegram} target="_blank" rel="noopener noreferrer" data-command-item>{ui.openTelegram}</a></li>
+    <li><button type="button" data-command-item data-command-theme>{ui.toggleTheme}<span class="theme-symbol" aria-hidden="true"></span></button></li>
+  </ul>
+  <p class="command-empty" role="status" hidden>{ui.commandEmpty}</p>
+  <div class="palette-footer"><span><kbd>Tab</kbd> {ui.commandHint}</span><span><kbd>Enter</kbd> {ui.commandEnter}</span></div>
+</dialog>

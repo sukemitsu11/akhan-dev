@@ -1,0 +1,9 @@
+---
+import { content } from '../config';
+---
+<div class="workflow-content" id="workflow">
+  <h3 id="workflow-heading">{content.workflow.title}</h3>
+  <ol class="workflow-list">
+    {content.workflow.items.map((item, index) => <li style={`--item-index:${index}`}><span class="workflow-number" aria-hidden="true">{index + 1}</span><h4>{item.title}</h4><p>{item.description}</p></li>)}
+  </ol>
+</div>

@@ -1,0 +1,108 @@
+<div class="ambient-background" aria-hidden="true"><canvas class="ambient-pattern"></canvas></div>
+<script>
+  const canvas = document.querySelector<HTMLCanvasElement>('.ambient-pattern');
+  const context = canvas?.getContext('2d');
+  if (canvas && context) {
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    const gridSize = 64;
+    const field = new Float32Array(gridSize * gridSize);
+    let seed = 731;
+    for (let index = 0; index < field.length; index++) {
+      seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+      field[index] = seed / 4294967296;
+    }
+    const wrap = (value: number) => ((value % gridSize) + gridSize) % gridSize;
+    const smooth = (value: number) => value * value * (3 - 2 * value);
+    function noise(x: number, y: number) {
+      const column = Math.floor(x), row = Math.floor(y);
+      const blendX = smooth(x - column), blendY = smooth(y - row);
+      const topLeft = field[wrap(row) * gridSize + wrap(column)]!;
+      const topRight = field[wrap(row) * gridSize + wrap(column + 1)]!;
+      const bottomLeft = field[wrap(row + 1) * gridSize + wrap(column)]!;
+      const bottomRight = field[wrap(row + 1) * gridSize + wrap(column + 1)]!;
+      return (topLeft + (topRight - topLeft) * blendX) * (1 - blendY) + (bottomLeft + (bottomRight - bottomLeft) * blendX) * blendY;
+    }
+    let width = 0, height = 0, elapsed = 0, previousTime = 0, lastDraw = 0, frame = 0, scrollUntil = 0;
+    const pitch = 7;
+    // Плотность считается на редкой сетке и интерполируется: шум гладкий, на глаз разницы нет.
+    const block = 4;
+    const levels = 16;
+    let coarse = new Float32Array(0);
+    function draw() {
+      if (!canvas || !context) return;
+      const dark = document.documentElement.dataset['theme'] === 'dark';
+      const maxAlpha = dark ? .15 : .09;
+      const drift = elapsed * .000025;
+      const waveX = Math.sin(elapsed * .00011) * .08;
+      const waveY = Math.cos(elapsed * .00009) * .08;
+      const columns = Math.ceil(width / pitch), rows = Math.ceil(height / pitch);
+      const coarseColumns = Math.ceil(columns / block) + 2, coarseRows = Math.ceil(rows / block) + 2;
+      if (coarse.length < coarseColumns * coarseRows) coarse = new Float32Array(coarseColumns * coarseRows);
+      for (let j = 0; j < coarseRows; j++) {
+        const v = j * block * pitch / 460 + waveY;
+        for (let i = 0; i < coarseColumns; i++) {
+          const u = i * block * pitch / 460 + waveX;
+          coarse[j * coarseColumns + i] = noise(u + drift, v - drift * .3) * .65 + noise(u * 2.2 - drift * .6, v * 2.2 + 9 + drift * .2) * .25 + noise(u * 4.4 + 17, v * 4.4 + drift * .8) * .1;
+        }
+      }
+      // Точки одного размера и прозрачности рисуются одним путём.
+      const buckets: (Path2D | undefined)[] = new Array(4 * levels);
+      for (let row = 0; row < rows; row++) {
+        const j = Math.floor(row / block), fy = row / block - j, y = row * pitch;
+        for (let column = 0; column < columns; column++) {
+          const i = Math.floor(column / block), fx = column / block - i;
+          const base = j * coarseColumns + i;
+          const top = coarse[base]! + (coarse[base + 1]! - coarse[base]!) * fx;
+          const bottom = coarse[base + coarseColumns]! + (coarse[base + coarseColumns + 1]! - coarse[base + coarseColumns]!) * fx;
+          const density = top + (bottom - top) * fy;
+          const strength = Math.max(0, Math.min(1, (density - .38) / .38));
+          if (strength < .04) continue;
+          const size = .8 + strength * 3.2, side = Math.ceil(size);
+          const key = (side - 1) * levels + Math.min(levels - 1, Math.round(strength * levels));
+          const path = buckets[key] ??= new Path2D();
+          const x = column * pitch;
+          path.rect(Math.round(x + (pitch - size) / 2), Math.round(y + (pitch - size) / 2), side, side);
+        }
+      }
+      context.clearRect(0, 0, width, height);
+      context.fillStyle = dark ? '#d7d5de' : '#48434f';
+      buckets.forEach((path, key) => {
+        if (!path) return;
+        context.globalAlpha = (key % levels) / levels * maxAlpha;
+        context.fill(path);
+      });
+      context.globalAlpha = 1;
+    }
+    function resize() {
+      if (!canvas || (width === innerWidth && height === innerHeight)) return;
+      width = innerWidth;
+      height = innerHeight;
+      // CSS-пиксели сохраняют растр и ограничивают нагрузку на Retina.
+      canvas.width = width;
+      canvas.height = height;
+      draw();
+    }
+    function tick(time: number) {
+      if (document.hidden || motion.matches) { frame = 0; return; }
+      if (previousTime) elapsed += Math.min(time - previousTime, 200);
+      previousTime = time;
+      // Во время прокрутки перерисовка пропускается, чтобы не мешать кадрам страницы.
+      if (time - lastDraw >= 84 && time > scrollUntil) { draw(); lastDraw = time; }
+      frame = requestAnimationFrame(tick);
+    }
+    function updateMotion() {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      previousTime = 0;
+      draw();
+      if (!motion.matches && !document.hidden) frame = requestAnimationFrame(tick);
+    }
+    resize();
+    updateMotion();
+    window.addEventListener('resize', resize, {passive:true});
+    window.addEventListener('scroll', () => { scrollUntil = performance.now() + 140; }, {passive:true});
+    new MutationObserver(draw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+    motion.addEventListener('change', updateMotion);
+    document.addEventListener('visibilitychange', updateMotion);
+  }
+</script>

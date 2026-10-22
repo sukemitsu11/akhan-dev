@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectItem from '../../components/ProjectItem.astro';
+import { content, siteConfig } from '../../config';
+import { projects } from '../../data/projects';
+---
+<Layout title={`${content.workPageTitle} | ${siteConfig.name}`}>
+  <section class="work-page" aria-labelledby="work-heading">
+    <a class="back-link" href="/">{content.ui.backHome}</a>
+    <h1 id="work-heading">{content.workPageTitle}</h1>
+    <p class="section-introduction">{content.workPageDescription}</p>
+    <ol class="projects-list" aria-label={content.ui.projectList}>{projects.map((project, index) => <ProjectItem project={project} index={index} />)}</ol>
+    <p class="projects-note">{content.projectsNote}</p>
+  </section>
+</Layout>

@@ -1,0 +1,20 @@
+---
+import { siteConfig, content } from '../config';
+import ThemeToggle from './ThemeToggle.astro';
+---
+<div class="header-shell">
+<header class="site-header page-width">
+  <a class="wordmark" href="/#top" aria-label={`${siteConfig.brand}. ${content.ui.home}`}>
+    <span class="wordmark-text" data-text={siteConfig.brand}>{siteConfig.brand}</span>
+  </a>
+  <nav aria-label={content.ui.navigation}>
+    {content.navigation.map(({ id, label }) => <a data-nav-link href={`/#${id}`}>{label}</a>)}
+  </nav>
+  <div class="header-tools">
+    <ThemeToggle />
+    <button class="command-trigger utility-button" type="button" data-command-open aria-haspopup="dialog" aria-controls="command-palette" hidden>
+      <span>{content.ui.commands}</span><kbd>⌘ K</kbd>
+    </button>
+  </div>
+</header>
+</div>

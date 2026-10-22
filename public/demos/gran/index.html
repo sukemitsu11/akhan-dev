@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Грань. Кухни, шкафы, гардеробные и прихожие на заказ в Новограде. Бесплатный замер и эскиз. Лесная улица, 24.">
+  <meta name="theme-color" content="#101112">
+  <meta property="og:title" content="Грань | Мебель для вашей жизни">
+  <meta property="og:description" content="Мебель на заказ в Новограде. Начните с бесплатного замера.">
+  <meta property="og:type" content="website">
+  <title>Грань | Мебель на заказ в Новограде</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/kitchen-concept.webp" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="src/rialto.css">
+  <script type="module" src="src/main.js"></script>
+<meta name="robots" content="noindex, nofollow"><link rel="stylesheet" href="/demos/concept.css"><script src="/demos/concept.js" defer></script></head>
+<body id="top">
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <header class="header">
+    <nav class="desktop-nav nav-left" aria-label="Разделы сайта">
+      <a href="#furniture">Мебель</a><a href="#projects">Проекты</a><a href="#process">Как заказать</a>
+    </nav>
+    <a class="brand" href="#top" aria-label="Грань, на главную">
+      <span>грань <span class="brand-second">мебели</span></span>
+    </a>
+    <div class="header-right"><nav class="desktop-nav nav-right" aria-label="Связь со студией"><a href="#measurement">Замер</a><a href="#contacts">Контакты</a></nav><a class="button button-small header-cta" href="#calculate">Рассчитать мебель</a></div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Меню <span aria-hidden="true">+</span></button>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация" hidden>
+      <a href="#furniture">Мебель</a><a href="#projects">Проекты</a><a href="#measurement">Бесплатный замер</a><a href="#contacts">Контакты</a>
+      <a href="#calculate">Рассчитать мебель</a><a href="tel:+7 (000) 000-00-00">+7 (000) 000-00-00</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-intro container">
+        <div class="hero-main">
+          <p class="eyebrow">Мебель на заказ в Новограде</p>
+          <h1 id="hero-title">Мебель для вашей жизни</h1>
+        </div>
+        <div class="hero-aside">
+          <p>Кухни и системы хранения. По вашим размерам.</p>
+          <a class="button hero-mobile-cta" href="#calculate">Рассчитать мебель</a>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="assets/kitchen-concept.webp" alt="Интерьерная концепция кухни: ореховые фасады и остров из светлого камня" width="1536" height="1024" fetchpriority="high">
+        <figcaption class="sr-only">Визуальная концепция, созданная для сайта. Не фотография выполненного проекта компании.</figcaption>
+      </figure>
+    </section>
+      <div class="service-strip container">
+        <p>Сначала <strong>ваша идея.</strong><br>Затем точная геометрия.</p>
+        <a href="#measurement">Бесплатный замер</a>
+        <a href="#process">Эскиз вашего проекта</a>
+        <a href="#contacts">Доставка мебели</a>
+      </div>
+
+    <section class="furniture-section section container" id="furniture" aria-labelledby="furniture-title">
+      <div class="section-heading reveal">
+        <h2 id="furniture-title">У каждой вещи своё место</h2>
+        <p>От кухни, где собирается семья, до шкафа, в котором всё под рукой. Выберите, с чего начнём.</p>
+      </div>
+      <div class="furniture-layout reveal">
+        <div class="furniture-list" id="furniture-list">
+          <div class="furniture-item is-active">
+            <h3><button type="button" data-category="kitchen" aria-expanded="true" aria-controls="description-kitchen">Кухни <span aria-hidden="true">−</span></button></h3>
+            <div class="category-description" id="description-kitchen"><p>Место для утреннего кофе и больших семейных ужинов. Планировка, фасады и хранение под ваш привычный ритм.</p><button type="button" class="text-link" data-select="Кухня">Обсудить кухню</button></div>
+          </div>
+          <div class="furniture-item">
+            <h3><button type="button" data-category="closet" aria-expanded="false" aria-controls="description-closet">Шкафы <span aria-hidden="true">+</span></button></h3>
+            <div class="category-description" id="description-closet" hidden><p>Встроенный шкаф по размерам вашей комнаты. Полки, ящики и секции для того, что важно именно вам.</p><button type="button" class="text-link" data-select="Шкаф">Обсудить шкаф</button></div>
+          </div>
+          <div class="furniture-item">
+            <h3><button type="button" data-category="wardrobe" aria-expanded="false" aria-controls="description-wardrobe">Гардеробные <span aria-hidden="true">+</span></button></h3>
+            <div class="category-description" id="description-wardrobe" hidden><p>Открытые секции и закрытое хранение. Продуманное наполнение для одежды, обуви и ежедневных мелочей.</p><button type="button" class="text-link" data-select="Гардеробная">Обсудить гардеробную</button></div>
+          </div>
+          <div class="furniture-item">
+            <h3><button type="button" data-category="hallway" aria-expanded="false" aria-controls="description-hallway">Прихожие <span aria-hidden="true">+</span></button></h3>
+            <div class="category-description" id="description-hallway" hidden><p>Место для верхней одежды, обуви и сумок. Удобный вход в дом даже на небольшой площади.</p><button type="button" class="text-link" data-select="Прихожая">Обсудить прихожую</button></div>
+          </div>
+        </div>
+        <figure class="category-preview">
+          <img id="category-image" src="assets/kitchen-concept.webp" alt="Концепция кухни с ореховыми фасадами" width="1536" height="1024" loading="lazy">
+          <figcaption><span id="category-caption">Кухня с характером</span><span class="muted">Интерьерная концепция</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="projects-section section container" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading reveal"><h2 id="projects-title">Мебель в интерьере</h2><p>Примеры сочетаний формы, фактуры и цвета. Представьте, как такое решение будет смотреться у вас.</p></div>
+      <div class="project-toolbar reveal"><p>Интерьерные решения</p><div class="filters" role="group" aria-label="Фильтр интерьерных решений"><button class="is-active" type="button" data-filter="all" aria-pressed="true">Все</button><button type="button" data-filter="kitchen" aria-pressed="false">Кухни</button><button type="button" data-filter="storage" aria-pressed="false">Хранение</button><button type="button" data-filter="materials" aria-pressed="false">Материалы</button></div></div>
+      <div class="project-grid" id="project-grid">
+        <article class="project project-large reveal" data-group="kitchen"><button class="project-open" type="button" data-project="kitchen" aria-label="Посмотреть концепцию кухни: орех и камень"><img src="assets/kitchen-concept.webp" alt="Ореховая кухня с каменным островом" width="1536" height="1024" loading="lazy"></button><div class="project-caption"><h3>Орех и камень</h3><p>Кухня</p></div></article>
+        <article class="project project-tall reveal" data-group="storage"><button class="project-open" type="button" data-project="wardrobe" aria-label="Посмотреть концепцию гардеробной: порядок в деталях"><img src="assets/wardrobe-concept.webp" alt="Ореховая гардеробная с открытыми секциями и мягкой скамьёй" width="1536" height="1024" loading="lazy"></button><div class="project-caption"><h3>Порядок в деталях</h3><p>Гардеробная</p></div></article>
+        <article class="project project-materials reveal" data-group="materials"><button class="project-open" type="button" data-project="materials" aria-label="Посмотреть палитру материалов"><img src="assets/materials-concept.webp" alt="Образцы дерева, камня и матовых мебельных фасадов" width="1536" height="1024" loading="lazy"></button><div class="project-caption"><h3>Фактуры, которые хочется трогать</h3><p>Палитра материалов</p></div></article>
+      </div>
+      <p class="concept-note">Здесь показаны визуальные концепции, а не выполненные проекты компании. Фотографии наших работ можно запросить по телефону.</p>
+      <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="measurement-section section" id="measurement" aria-labelledby="measurement-title">
+      <div class="measurement-layout container reveal">
+        <div class="measurement-title"><p class="eyebrow">Бесплатный замер</p><h2 id="measurement-title">Всё начинается<br>с точных размеров</h2><a class="button" href="#calculate" data-purpose="Замер">Запланировать замер</a></div>
+        <div class="measurement-copy"><p class="large-copy">Вам не нужно<br>знать всё заранее.</p><p>Начнём с вашего пространства и пожеланий. На замере обсудим планировку, расположение мебели и то, что должно в ней поместиться.</p><p>Замер и эскиз бесплатные. Дату выезда и условия доставки согласуем при обсуждении проекта.</p><a class="text-link" href="tel:+7 (000) 000-00-00">Можно просто позвонить</a></div>
+      </div>
+    </section>
+
+    <section class="process-section section container" id="process" aria-labelledby="process-title">
+      <div class="section-heading reveal"><h2 id="process-title">От идеи до вашего дома</h2><p>Понятная последовательность, в которой есть место вашим вопросам и решениям.</p></div>
+      <ol class="process-list reveal"><li><span class="step-number">1</span><h3>Знакомимся</h3><p>Вы рассказываете, какая мебель нужна. Обсуждаем пространство и удобное время замера.</p></li><li><span class="step-number">2</span><h3>Проектируем</h3><p>Согласуем размеры, эскиз, материалы и наполнение. Уточним стоимость и сроки.</p></li><li><span class="step-number">3</span><h3>Изготавливаем</h3><p>Мебель создаётся по согласованному проекту. Порядок оплаты фиксируется при заказе.</p></li><li><span class="step-number">4</span><h3>Доставляем</h3><p>Договариваемся о доставке. Сборку и детали установки обсуждаем заранее.</p></li></ol>
+    </section>
+
+    <section class="calculate-section section container" id="calculate" aria-labelledby="calculate-title">
+      <div class="calculate-intro reveal"><h2 id="calculate-title">Какая мебель<br>будет вашей?</h2><p>Несколько деталей помогут начать разговор. Точные размеры и материалы можно определить на замере.</p><p class="form-explanation">Подготовим текст запроса, который вы сможете скопировать или отправить по SMS.</p></div>
+      <form id="request-form" class="request-form reveal">
+        <fieldset><legend>Что хотите заказать?</legend><div class="type-options"><label><input type="radio" name="furniture" value="Кухня" checked><span>Кухню</span></label><label><input type="radio" name="furniture" value="Шкаф"><span>Шкаф</span></label><label><input type="radio" name="furniture" value="Гардеробная"><span>Гардеробную</span></label><label><input type="radio" name="furniture" value="Прихожая"><span>Прихожую</span></label></div></fieldset>
+        <div class="field-row"><label class="field">Примерная ширина, см <input type="number" name="width" min="20" max="3000" step="1" placeholder="Например, 300" inputmode="numeric"><span class="field-hint">Можно оставить пустым</span></label><label class="field">Предпочтение по фасадам <select name="material"><option value="Помогите выбрать">Помогите выбрать</option><option value="Под дерево">Под дерево</option><option value="Матовые">Матовые</option><option value="Комбинированные">Комбинированные</option></select></label></div>
+        <label class="field">Что для вас важно? <textarea name="wishes" rows="3" maxlength="1500" placeholder="Планировка, цвет, что нужно хранить или ссылка на понравившийся пример"></textarea></label>
+        <label class="measurement-check"><input type="checkbox" name="measurement"><span>Хочу записаться на бесплатный замер</span></label>
+        <button class="button form-submit" type="submit">Подготовить запрос</button>
+        <p class="form-footnote">Итоговая стоимость зависит от размеров, материалов и наполнения. Она согласуется индивидуально.</p>
+      </form>
+      <noscript><p>Для подготовки запроса включите JavaScript или позвоните: <a href="tel:+7 (000) 000-00-00">+7 (000) 000-00-00</a>.</p></noscript>
+    </section>
+
+    <section class="faq-section section container" aria-labelledby="faq-title"><h2 id="faq-title" class="reveal">До первого звонка.</h2><div class="faq-list reveal"><details><summary>Можно заказать мебель без готового проекта?<span aria-hidden="true">+</span></summary><p>Да. Начать можно с идеи, фотографии или описания того, что вам нужно. Размеры и эскиз обсудим на бесплатном замере.</p></details><details><summary>Как узнать стоимость?<span aria-hidden="true">+</span></summary><p>Подготовьте запрос на сайте или позвоните. Для расчёта понадобятся размеры, пожелания по материалам и наполнению. Точная сумма согласуется после обсуждения проекта.</p></details><details><summary>Замер и эскиз действительно бесплатные?<span aria-hidden="true">+</span></summary><p>Компания предлагает бесплатный замер и эскиз. По телефону уточните удобную дату и возможность выезда по вашему адресу.</p></details><details><summary>Есть ли доставка и сборка?<span aria-hidden="true">+</span></summary><p>Доставка предусмотрена. Стоимость, сроки, сборку и условия установки нужно согласовать при заказе.</p></details></div></section>
+
+    <footer class="footer" id="contacts">
+      <div class="footer-top container reveal"><div><h2>Ваш дом.<br>Ваша геометрия.</h2><a class="footer-phone" href="tel:+7 (000) 000-00-00">+7 (000) 000-00-00</a></div><div class="footer-address"><p>Новоград<br>Лесная улица, 24</p><a class="text-link" href="https://example.com/demo-location" target="_blank" rel="noopener noreferrer">Открыть в 2ГИС</a><p class="muted">Перед визитом позвоните,<br>чтобы согласовать встречу.</p></div></div>
+      <div class="footer-wordmark container" aria-hidden="true">Грань</div>
+      <div class="footer-bottom container"><p>© <span id="year">2026</span> Грань</p><p>Мебель по вашим размерам</p><a href="#top">Наверх</a></div>
+    </footer>
+  </main>
+
+  <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title"><button type="button" class="dialog-close" data-close aria-label="Закрыть просмотр">×</button><img id="dialog-image" src="assets/kitchen-concept.webp" alt="" width="1536" height="1024"><div class="project-dialog-content"><div><p class="muted">Интерьерная концепция</p><h2 id="project-dialog-title">Орех и камень</h2><p id="project-dialog-description"></p><p class="dialog-note">Визуальный пример, не выполненный проект компании.</p></div><button type="button" class="button" id="similar-project">Хочу похожую мебель</button></div></dialog>
+  <dialog class="request-dialog" id="request-dialog" aria-labelledby="request-dialog-title"><button type="button" class="dialog-close" data-close aria-label="Закрыть запрос">×</button><p class="eyebrow">Первый шаг сделан</p><h2 id="request-dialog-title">Ваш запрос готов.</h2><p>Отправьте его со своего телефона или скопируйте для удобного вам способа связи.</p><label class="field">Текст запроса <textarea id="request-text" rows="8" readonly></textarea></label><div class="dialog-actions"><button class="button" id="copy-request" type="button">Скопировать запрос</button><a class="button button-secondary" id="sms-request" href="sms:+7 (000) 000-00-00">Открыть SMS</a></div><p id="copy-status" role="status" aria-live="polite"></p><a class="text-link" href="tel:+7 (000) 000-00-00">Позвонить: +7 (000) 000-00-00</a></dialog>
+<footer class="akhan-concept-footer"><p>Концепт-сайт. Бренд, цены и отзывы вымышлены. Дизайн и разработка — <a href="/">akhan-dev</a></p></footer></body>
+</html>

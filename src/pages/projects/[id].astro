@@ -1,0 +1,6 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { projects } from '../../data/projects';
+export const getStaticPaths = (() => projects.map(project => ({ params: { id: project.id }, props: { project } }))) satisfies GetStaticPaths;
+return Astro.redirect(Astro.props.project.demo);
+---

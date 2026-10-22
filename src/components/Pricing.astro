@@ -1,0 +1,9 @@
+---
+import { content, siteConfig } from '../config';
+---
+<section class="pricing-section" id="pricing" aria-labelledby="pricing-heading" data-reveal>
+  <h2 id="pricing-heading">{content.pricing.title}</h2>
+  <p class="section-introduction">{content.pricing.description}</p>
+  <div class="pricing-list">{content.pricing.items.map((item, index) => <article style={`--item-index:${index}`}><h3>{item.title}</h3><p class="price">{item.price}</p><p class="price-description">{item.description}</p><h4>{content.pricing.includesLabel}</h4><ul>{item.includes.map(text => <li>{text}</li>)}</ul><a class="action-button price-contact" href={siteConfig.telegram} target="_blank" rel="noopener noreferrer" aria-label={`${content.ui.discuss}: ${item.title}`}>{content.ui.discuss}</a></article>)}</div>
+  <p class="pricing-note">{content.pricing.note}</p>
+</section>

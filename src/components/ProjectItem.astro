@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+import { content } from '../config';
+interface Props { project: Project; index: number; }
+const { project, index } = Astro.props;
+---
+<li class="project" id={`project-${project.id}`}>
+  <article aria-labelledby={`title-${project.id}`}>
+    <a class="project-preview" href={project.demo} aria-label={`${project.previewLabel}. ${content.ui.projectPreview}: ${project.name}`} data-project-preview>
+      <span class="browser-bar" aria-hidden="true"><span class="browser-dots"><i></i><i></i><i></i></span><span>{project.previewLabel}</span></span>
+      <span class="project-window" data-preview-window>
+        <Image class="preview-image" src={project.image} alt={`Главная страница сайта «${project.name}»`} widths={[480, 672, 840, 960, 1440]} sizes="(min-width: 1776px) 826px, (min-width: 1101px) calc((100vw - 124px) / 2), (min-width: 761px) calc((100vw - 100px) / 2), calc(100vw - 40px)" format="avif" quality={45} loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} data-preview-image />
+      </span>
+    </a>
+    <div class="project-caption">
+      <p class="project-category"><span class="project-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>{project.category}<span class="project-year">{project.year}</span></p>
+      <p class="project-kind">{content.ui.projectKind}</p>
+      <div class="project-heading"><h3 id={`title-${project.id}`}><a href={project.demo}>{project.name}</a></h3><a class="project-detail-link" href={project.demo}>{content.ui.demo}<span class="sr-only">: {project.name}</span></a></div>
+      <p class="project-description">{project.description}</p>
+      <ul class="technologies" aria-label={`Технологии проекта «${project.name}»`}>{project.technologies.map(technology => <li>{technology}</li>)}</ul>
+      <button class="preview-toggle" type="button" data-preview-toggle data-preview-target={`project-${project.id}`} data-reset-label={content.ui.previewReset} data-scroll-label={content.ui.previewScroll} aria-pressed="false" hidden>{content.ui.previewScroll}</button>
+    </div>
+  </article>
+</li>

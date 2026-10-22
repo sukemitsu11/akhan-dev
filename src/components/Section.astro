@@ -1,0 +1,8 @@
+---
+interface Props { id: string; title: string; class?: string; hideTitle?: boolean; }
+const { id, title, class: className = '', hideTitle = false } = Astro.props;
+---
+<section id={id} class:list={['text-section', className]} aria-labelledby={`${id}-heading`} data-reveal>
+  <h2 id={`${id}-heading`} class:list={['section-label', { 'sr-only': hideTitle }]}>{title}</h2>
+  <div class="section-content"><slot /></div>
+</section>

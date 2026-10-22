@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import portrait from '../assets/profile/artem-khan.png';
+import Section from '../components/Section.astro';
+import ProjectItem from '../components/ProjectItem.astro';
+import { siteConfig, content } from '../config';
+import { projects } from '../data/projects';
+import Development from '../components/Development.astro';
+import Pricing from '../components/Pricing.astro';
+const featuredProjects = projects.slice(0, 4);
+---
+<Layout>
+  <section class="intro" id="intro" aria-labelledby="intro-heading">
+    <div class="intro-copy">
+    <div class="identity-row">
+      <div><h1 id="intro-heading">{siteConfig.name}</h1><p class="intro-role">{siteConfig.role}</p></div>
+      <div class="identity-meta"><p class:list={['availability', { available: siteConfig.available }]}><span aria-hidden="true"></span>{siteConfig.availability}</p><span class="intro-location" aria-label={`${content.ui.city}: ${siteConfig.location}`}>{siteConfig.location}</span></div>
+    </div>
+    <div class="intro-grid">
+      <div class="intro-bio"><h2 class="section-label">{content.introLabel}</h2><p class="intro-description">{content.intro}</p></div>
+      <section id="now" class="now-section" aria-labelledby="now-heading">
+        <h2 id="now-heading" class="section-label">{content.ui.now}</h2>
+        <p>{content.now}</p>
+      </section>
+    </div>
+    <a class="action-button hero-contact" href={siteConfig.telegram} target="_blank" rel="noopener noreferrer">{content.ui.discussProject}</a>
+    </div>
+    <figure class="profile-portrait"><Image src={portrait} alt={`Портрет: ${siteConfig.name}`} widths={[150, 300, 600, 900]} sizes="(max-width: 360px) 96px, (max-width: 540px) 112px, (max-width: 760px) 150px, (max-width: 1100px) 220px, 300px" format="webp" quality={86} loading="eager" fetchpriority="high" /></figure>
+  </section>
+
+  <section class="projects-section" id="projects" aria-labelledby="projects-heading" data-reveal>
+    <div class="projects-intro"><h2 id="projects-heading">{content.projectsTitle}<span class="project-count" aria-hidden="true">{String(featuredProjects.length).padStart(2, '0')}</span></h2><p class="preview-hint">{content.previewHint}</p></div>
+    <ol class="projects-list" aria-label={content.ui.projectList}>
+      {featuredProjects.map((project, index) => <ProjectItem project={project} index={index} />)}
+    </ol>
+    {projects.length > featuredProjects.length && <div class="all-work-row"><a class="text-button" href="/projects/">{content.ui.allProjects}</a></div>}
+    <p class="projects-note">{content.projectsNote}</p>
+  </section>
+
+  <Development />
+  <Pricing />
+
+  <div class="personal-grid">
+  <Section id="about" title={content.ui.about}>
+    <div class="prose">{content.about.map(paragraph => <p>{paragraph}</p>)}</div>
+    <div class="about-outside" id="outside">
+      <h3>{content.ui.outside}</h3>
+      <p>{content.outside}</p>
+      {content.outsideNote && <p class="quiet-note">{content.outsideNote}</p>}
+    </div>
+  </Section>
+
+  <Section id="stack" title={content.ui.stack}>
+    <dl class="stack-list">{content.stack.map(({ category, items }) => <div><dt>{category}</dt><dd><ul>{items.map(item => <li>{item}</li>)}</ul></dd></div>)}</dl>
+  </Section>
+  </div>
+
+  <Section id="contact" title={content.ui.contact} class="contact-section" hideTitle>
+    <h3>{content.contactHeading}<br /><span>{content.contactSubheading}</span></h3>
+    <p class="contact-description">{content.contactDescription}</p>
+    <div class="contact-links">
+      <a class="action-button contact-telegram" href={siteConfig.telegram} target="_blank" rel="noopener noreferrer">{content.ui.openTelegram}</a>
+      <a href={siteConfig.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </Section>
+</Layout>

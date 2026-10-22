@@ -1,0 +1,13 @@
+---
+import { content } from '../config';
+import Workflow from './Workflow.astro';
+---
+<section class="development-section" id="development" aria-labelledby="development-heading" data-reveal>
+  <h2 id="development-heading">{content.development.sectionTitle}</h2>
+  <p class="section-introduction">{content.development.description}</p>
+  <Workflow />
+  <div class="development-included">
+    <h3>{content.development.title}</h3>
+    <ul class="development-list">{content.development.items.map((item, index) => <li style={`--item-index:${index}`}><h4>{item.title}</h4><p>{item.description}</p></li>)}</ul>
+  </div>
+</section>
