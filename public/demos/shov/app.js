@@ -267,7 +267,9 @@ document.addEventListener('click', event => {
 /* Оформление и тестовая оплата. */
 const TEST_CARD = '4242 4242 4242 4242';
 const DECLINE_CARD = '4000000000000002';
-let paying = false;
+// Форма, по которой идёт оплата. Флаг привязан к форме: после ухода со страницы новая форма не блокируется.
+let paying = null;
+const isPaying = () => Boolean(paying?.isConnected);
 let deliveryMethod = 'courier';
 
 function luhn(digits) {
@@ -315,14 +317,14 @@ function summaryHtml() {
 function refreshCheckoutSummary() {
   const summary = $('[data-summary]', app);
   if (!summary) return;
-  if (!cart.length && !paying) { route(); return; }
+  if (!cart.length && !isPaying()) { route(); return; }
   summary.innerHTML = summaryHtml();
   $$('[data-delivery-price]', app).forEach(node => {
     const price = deliveryPrice(node.dataset.deliveryPrice);
     node.textContent = price ? money(price) : 'Бесплатно';
   });
   const payButton = $('[data-pay]', app);
-  if (payButton && !paying) payButton.textContent = `Оплатить ${money(subtotal() + deliveryPrice(deliveryMethod))}`;
+  if (payButton && !isPaying()) payButton.textContent = `Оплатить ${money(subtotal() + deliveryPrice(deliveryMethod))}`;
 }
 
 function renderCheckout() {
@@ -450,7 +452,7 @@ function validateCheckout(form) {
 }
 
 async function pay(form) {
-  if (paying) return;
+  if (isPaying()) return;
   const formError = $('[data-form-error]', form);
   formError.hidden = true;
   const { errors, values, card } = validateCheckout(form);
@@ -463,21 +465,21 @@ async function pay(form) {
   const signature = cartSignature();
   const total = subtotal() + deliveryPrice(deliveryMethod);
   const button = $('[data-pay]', form);
-  paying = true;
+  paying = form;
   $$('fieldset, [data-pay]', form).forEach(node => { node.disabled = true; });
   form.setAttribute('aria-busy', 'true');
   button.textContent = 'Проводим оплату…';
   await new Promise(resolve => setTimeout(resolve, reducedMotion.matches ? 600 : 1600));
 
   const unlock = message => {
-    paying = false;
+    paying = null;
     form.removeAttribute('aria-busy');
     $$('fieldset, [data-pay]', form).forEach(node => { node.disabled = false; });
     refreshCheckoutSummary();
     formError.textContent = message;
     formError.hidden = false;
   };
-  if (!form.isConnected) { paying = false; return; }
+  if (!form.isConnected) { if (paying === form) paying = null; refreshCheckoutSummary(); return; }
   if (cartSignature() !== signature || !cart.length) { unlock('Корзина изменилась во время оплаты. Проверьте заказ и нажмите «Оплатить» ещё раз.'); return; }
   if (card === DECLINE_CARD) { unlock('Банк отклонил оплату. Это тестовый отказ: попробуйте карту 4242 4242 4242 4242.'); setFieldError(form, 'card', 'Оплата отклонена.'); return; }
 
@@ -494,7 +496,7 @@ async function pay(form) {
   lastOrder = order;
   cart = [];
   saveCart();
-  paying = false;
+  paying = null;
   location.hash = '#/done';
 }
 
@@ -510,12 +512,12 @@ function renderDone() {
       <p class="done-number">${escapeHtml(order.number)}</p>
       <div class="seam" aria-hidden="true"></div>
       <h1 id="page-title" tabindex="-1">Заказ оплачен</h1>
-      <p class="done-lead">${escapeHtml(order.name)}, спасибо. Тестовая оплата ${money(Number(order.total) || 0)} прошла по карте •••• ${escapeHtml(String(order.last4 || '').slice(-4))}. Настоящих списаний нет.</p>
-      <ul class="summary-lines">${order.lines.filter(line => byId.has(line.id)).map(line => {
+      <p class="done-lead">${escapeHtml(order.name || 'Покупатель')}, спасибо. Тестовая оплата ${money(Number(order.total) || 0)} прошла по карте •••• ${escapeHtml(String(order.last4 || '').slice(-4))}. Настоящих списаний нет.</p>
+      <ul class="summary-lines">${sanitizeCart(order.lines).map(line => {
         const product = byId.get(line.id);
         return `<li><span>${product.name}<small>Размер ${escapeHtml(line.size)}, ${Number(line.qty) || 0} шт.</small></span><span>${money(product.price * (Number(line.qty) || 0))}</span></li>`;
       }).join('')}</ul>
-      <p class="done-delivery">Способ получения: ${escapeHtml(order.delivery)}</p>
+      <p class="done-delivery">Способ получения: ${escapeHtml(order.delivery || 'не указан')}</p>
       <a class="button" href="#/">Вернуться в каталог</a>
     </section>`;
 }
@@ -544,7 +546,8 @@ function route() {
 
 window.addEventListener('hashchange', route);
 window.addEventListener('storage', event => {
-  if (event.key !== CART_KEY) return;
+  // key === null приходит при localStorage.clear() в другой вкладке.
+  if (event.key !== CART_KEY && event.key !== null) return;
   cart = loadCart();
   updateBagCount();
   if (bag.open) renderBag();
