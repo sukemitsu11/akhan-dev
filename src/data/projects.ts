@@ -3,6 +3,7 @@ import komnata from '../assets/projects/komnata.png';
 import kontur from '../assets/projects/kontur.png';
 import gran from '../assets/projects/gran.png';
 import list from '../assets/projects/list.png';
+import shov from '../assets/projects/shov.png';
 
 export interface Project {
   id: string;
@@ -19,6 +20,13 @@ export interface Project {
 
 /** Демонстрационные интерфейсы. Названия компаний, адреса и контакты вымышлены. */
 export const projects: Project[] = [
+  {
+    id: 'shov', name: 'Шов', category: 'Магазин одежды и обуви',
+    description: 'Интернет-магазин с каталогом, выбором размера, корзиной и оформлением заказа. Оплата тестовая, без регистрации.',
+    technologies: ['HTML', 'CSS', 'JavaScript'], image: shov,
+    previewLabel: 'shov.example', demo: '/demos/shov/index.html', year: '2026',
+    scope: ['Каталог с фильтрами и сортировкой', 'Карточки товаров с размерной сеткой', 'Корзина, доставка и тестовая оплата картой'],
+  },
   {
     id: 'komnata', name: 'Комната', category: 'Мебельный магазин',
     description: 'Каталог мебели с подбором по комнатам. Интерьерные коллекции, карточки товаров и пошаговый помощник для выбора.',
