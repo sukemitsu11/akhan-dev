@@ -102,13 +102,14 @@ function renderCatalog(category) {
   document.title = category ? `${CATEGORIES[category]} | Шов` : 'Шов | Одежда и обувь';
   app.innerHTML = `
     <section class="hero" aria-labelledby="page-title">
-      <h1 id="page-title" class="wordmark" tabindex="-1" translate="no"><span aria-hidden="true">ШОВ</span><span class="sr-only">Шов. Одежда и обувь</span></h1>
-      <div class="seam" aria-hidden="true"></div>
-      <div class="hero-info">
-        <p class="hero-lead">Одежда и обувь, у которых видно, как они сшиты. Малые партии, плотные ткани, прошитые подошвы.</p>
-        <p>Доставка от 190 ₽<br>Бесплатно от 15 000 ₽</p>
-        <p>Возврат 14 дней<br>Примерка при курьере</p>
+      <div class="hero-top">
+        <h1 id="page-title" class="wordmark" tabindex="-1" translate="no"><span aria-hidden="true">ШОВ</span><span class="sr-only">Шов. Одежда и обувь</span></h1>
+        <div class="hero-info">
+          <p class="hero-lead">Одежда и обувь, у которых видно, как они сшиты. Малые партии, плотные ткани, прошитые подошвы.</p>
+          <div class="hero-facts"><p>Доставка от 190 ₽, бесплатно от 15 000 ₽</p><p>Возврат 14 дней, примерка при курьере</p></div>
+        </div>
       </div>
+      <div class="seam" aria-hidden="true"></div>
     </section>
     <section class="catalog" aria-labelledby="catalog-title">
       <div class="catalog-bar">

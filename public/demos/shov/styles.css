@@ -2,17 +2,17 @@
 @font-face { font-family:'Unbounded'; font-style:normal; font-weight:200 900; font-display:swap; src:url('/demos/shov/assets/unbounded-latin.woff2') format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD }
 @font-face { font-family:'Golos Text'; font-style:normal; font-weight:400 900; font-display:swap; src:url('/demos/shov/assets/golos-variable.woff2') format('woff2') }
 
-/* Весь сайт напечатан одной краской: кобальт на холодном сером. Красный только для ошибок. */
+/* Нейтральная бумага и графит. Акцент совпадает с цветом текста: чтобы добавить цвет, достаточно сменить --accent. Красный только для ошибок. */
 :root {
-  --paper:#e6e7e1; --raised:#eeefea; --well:#d6d8d0; --ink:#1f33c7; --ink-soft:#3f4f9e; --alert:#b3261e;
-  --backdrop:rgb(17 19 27 / 42%);
+  --paper:#f1f1ee; --raised:#f8f8f6; --well:#e2e3df; --ink:#1b1d1c; --ink-soft:#5c615e; --accent:#1b1d1c; --alert:#a8271f;
+  --backdrop:rgb(18 20 19 / 40%);
   --gutter:clamp(16px, 2.4vw, 32px); --header:64px;
   --display:'Unbounded', 'Arial Black', sans-serif; --body:'Golos Text', 'Segoe UI', Arial, sans-serif;
   color-scheme:light;
 }
-:root[data-theme="dark"] { --paper:#11131b; --raised:#171a24; --well:#1d2030; --ink:#a7b1ff; --ink-soft:#8790c9; --alert:#ff8f86; --backdrop:rgb(0 0 0 / 60%); color-scheme:dark }
+:root[data-theme="dark"] { --paper:#121413; --raised:#1a1d1b; --well:#232725; --ink:#eceeeb; --ink-soft:#a0a6a2; --accent:#eceeeb; --alert:#ff8f86; --backdrop:rgb(0 0 0 / 60%); color-scheme:dark }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --paper:#11131b; --raised:#171a24; --well:#1d2030; --ink:#a7b1ff; --ink-soft:#8790c9; --alert:#ff8f86; --backdrop:rgb(0 0 0 / 60%); color-scheme:dark }
+  :root:not([data-theme="light"]) { --paper:#121413; --raised:#1a1d1b; --well:#232725; --ink:#eceeeb; --ink-soft:#a0a6a2; --accent:#eceeeb; --alert:#ff8f86; --backdrop:rgb(0 0 0 / 60%); color-scheme:dark }
 }
 
 *,*::before,*::after { box-sizing:border-box }
@@ -26,15 +26,15 @@ img { display:block; max-width:100%; height:auto }
 button,input,select { font:inherit; color:inherit }
 button { cursor:pointer; background:none; border:0; padding:0 }
 button, a, label, select { touch-action:manipulation; -webkit-tap-highlight-color:transparent }
-:focus-visible { outline:2px solid var(--ink); outline-offset:3px }
+:focus-visible { outline:2px solid var(--accent); outline-offset:3px }
 #app:focus, [tabindex="-1"]:focus { outline:none }
 .sr-only { position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0 }
-.skip-link { position:fixed; z-index:30; top:8px; left:8px; padding:10px 14px; background:var(--ink); color:var(--paper); transform:translateY(-160%) }
+.skip-link { position:fixed; z-index:30; top:8px; left:8px; padding:10px 14px; background:var(--accent); color:var(--paper); transform:translateY(-160%) }
 .skip-link:focus { transform:none }
 .noscript { padding:80px var(--gutter) }
 
 /* Шов: пунктирная строчка, которой размечены границы разделов. */
-.seam { height:3px; background:repeating-linear-gradient(90deg, var(--ink) 0 16px, transparent 16px 26px) }
+.seam { height:3px; background:repeating-linear-gradient(90deg, var(--accent) 0 16px, transparent 16px 26px) }
 
 /* Шапка */
 .header { position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; height:var(--header); padding-inline:var(--gutter); background:var(--paper) }
@@ -48,17 +48,20 @@ button, a, label, select { touch-action:manipulation; -webkit-tap-highlight-colo
 
 main { padding-inline:var(--gutter); min-height:60vh }
 
-/* Главная: вордмарк и строчка */
-.hero { padding-top:clamp(8px, 2vw, 24px); container-type:inline-size }
-/* Коэффициент подобран так, чтобы «ШОВ» занимал ровно ширину контейнера. */
-.wordmark { position:relative; font:800 31.3cqi/.8 var(--display); letter-spacing:-.015em; margin-left:-.03em; padding-bottom:.04em; white-space:nowrap; overflow:hidden }
-.hero > .seam { margin-top:clamp(12px, 1.6vw, 24px) }
-.hero-info { display:grid; grid-template-columns:repeat(12, minmax(0, 1fr)); column-gap:var(--gutter); row-gap:16px; padding-block:24px clamp(48px, 7vw, 96px); font-size:15px; color:var(--ink-soft) }
-.hero-info p { grid-column:span 3 }
-.hero-lead { grid-column:1 / span 6 !important; max-width:34ch; font-size:clamp(18px, 1.6vw, 22px); line-height:1.4; color:var(--ink) }
+/* Главная: вордмарк, текст рядом и строчка */
+.hero { padding-top:clamp(4px, 1vw, 12px); container-type:inline-size }
+.hero-top { display:grid; grid-template-columns:auto minmax(0, 1fr); align-items:end; column-gap:clamp(24px, 4vw, 64px) }
+/* Коэффициент подобран по ширине слова: при 31.3cqi «ШОВ» занимает весь контейнер. */
+.wordmark { position:relative; font:800 20cqi/.8 var(--display); letter-spacing:-.015em; margin-left:-.03em; padding-bottom:.04em; white-space:nowrap; overflow:hidden; color:var(--accent) }
+.hero > .seam { margin-top:clamp(10px, 1.2vw, 16px) }
+.hero-info { display:grid; gap:14px; padding-bottom:.6em; font-size:15px; color:var(--ink-soft) }
+.hero-lead { max-width:34ch; font-size:clamp(17px, 1.5vw, 21px); line-height:1.4; color:var(--ink) }
+.hero-facts { display:flex; flex-wrap:wrap; gap:4px 28px }
+.hero-facts p { font-size:15px }
+.hero > .seam + * { margin-top:0 }
 
 /* Каталог */
-.catalog-bar { display:flex; align-items:center; gap:16px 32px; flex-wrap:wrap; margin-bottom:clamp(28px, 4vw, 48px) }
+.catalog-bar { display:flex; align-items:center; gap:8px 32px; flex-wrap:wrap; margin-bottom:clamp(16px, 2vw, 24px) }
 .filters { display:flex; gap:24px; font:500 clamp(20px, 2vw, 26px)/1 var(--display); letter-spacing:-.02em }
 .filters a { min-height:44px; display:inline-flex; align-items:center; color:var(--ink-soft); text-underline-offset:8px; text-decoration-thickness:2px }
 .filters a:hover { color:var(--ink) }
@@ -67,18 +70,11 @@ main { padding-inline:var(--gutter); min-height:60vh }
 .sort select { min-height:44px; padding:0 28px 0 0; border:0; border-bottom:1.5px solid var(--ink); border-radius:0; background:var(--paper) linear-gradient(var(--ink), var(--ink)) no-repeat right 4px center / 10px 1.5px; appearance:none; font-size:15px; cursor:pointer }
 .sort select option { background:var(--paper); color:var(--ink) }
 
-.grid { display:grid; grid-template-columns:repeat(12, minmax(0, 1fr)); column-gap:var(--gutter); row-gap:clamp(48px, 6vw, 88px); align-items:start }
-.card { grid-column:span 4 }
-.grid > .card:nth-child(6n+1) { grid-column:1 / span 5 }
-.grid > .card:nth-child(6n+2) { grid-column:7 / span 3; margin-top:clamp(64px, 12vw, 200px) }
-.grid > .card:nth-child(6n+3) { grid-column:10 / span 3 }
-.grid > .card:nth-child(6n+4) { grid-column:2 / span 3 }
-.grid > .card:nth-child(6n+5) { grid-column:6 / span 4; margin-top:clamp(40px, 8vw, 120px) }
-.grid > .card:nth-child(6n) { grid-column:10 / span 3; margin-top:clamp(120px, 18vw, 300px) }
+.grid { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:clamp(32px, 3.4vw, 48px) var(--gutter); align-items:start }
 .card a { display:block }
 .card-media { display:block; position:relative; overflow:hidden; aspect-ratio:4 / 5; background:var(--well); outline:2px dashed transparent; outline-offset:6px }
 .card-media img { width:100%; height:100%; object-fit:cover }
-.card a:hover .card-media, .card a:focus-visible .card-media { outline-color:var(--ink) }
+.card a:hover .card-media, .card a:focus-visible .card-media { outline-color:var(--accent) }
 .card a:focus-visible { outline:none }
 .card-line { display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-top:14px; font-size:17px; line-height:1.3 }
 .card-name { font-weight:500 }
@@ -86,7 +82,7 @@ main { padding-inline:var(--gutter); min-height:60vh }
 .card-meta { display:block; margin-top:4px; font-size:14px; color:var(--ink-soft) }
 
 /* Кнопки и ссылки */
-.button { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 28px; background:var(--ink); color:var(--paper); font-weight:600; font-size:16px; white-space:nowrap; transition:transform 120ms ease, opacity 120ms ease }
+.button { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 28px; background:var(--accent); color:var(--paper); font-weight:600; font-size:16px; white-space:nowrap; transition:transform 120ms ease, opacity 120ms ease }
 .button:hover { opacity:.9 }
 .button:active { transform:translateY(1px) }
 .button:disabled { opacity:.55; cursor:progress }
@@ -113,7 +109,7 @@ main { padding-inline:var(--gutter); min-height:60vh }
 .size input { position:absolute; inset:0; opacity:0; margin:0; cursor:pointer }
 .size span:first-of-type { display:grid; place-items:center; min-height:48px; border:1.5px solid var(--ink); font-variant-numeric:tabular-nums; transition:background-color 120ms ease, color 120ms ease }
 .size:hover span:first-of-type { background:var(--raised) }
-.size input:checked + span { background:var(--ink); color:var(--paper) }
+.size input:checked + span { background:var(--accent); border-color:var(--accent); color:var(--paper) }
 .size input:focus-visible + span { outline:2px solid var(--ink); outline-offset:3px }
 .size.is-out span:first-of-type { border-style:dashed; color:var(--ink-soft); text-decoration:line-through; background:transparent }
 .size.is-out input { cursor:not-allowed }
@@ -124,7 +120,7 @@ main { padding-inline:var(--gutter); min-height:60vh }
 .pdp-details div { display:grid; grid-template-columns:110px 1fr; gap:12px }
 .pdp-details dt { color:var(--ink-soft) }
 
-.related { margin-top:clamp(80px, 10vw, 140px) }
+.related { margin-top:clamp(48px, 6vw, 80px) }
 .related h2 { margin:28px 0 32px; font:500 clamp(22px, 2.2vw, 30px)/1.2 var(--display); letter-spacing:-.02em }
 .related-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:var(--gutter) }
 
@@ -175,7 +171,7 @@ main { padding-inline:var(--gutter); min-height:60vh }
 .checkout h1, .empty-page h1, .done h1 { margin-top:8px; font:600 clamp(32px, 4vw, 56px)/1.05 var(--display); letter-spacing:-.035em }
 .checkout-grid { display:grid; grid-template-columns:repeat(12, minmax(0, 1fr)); column-gap:var(--gutter); align-items:start; margin-top:clamp(28px, 4vw, 48px) }
 .checkout-form { grid-column:1 / span 7; display:grid; gap:40px }
-.block { margin:0; padding:24px 0 0; border:0; min-width:0; display:grid; gap:16px; background:repeating-linear-gradient(90deg, var(--ink) 0 16px, transparent 16px 26px) no-repeat top left / 100% 3px }
+.block { margin:0; padding:24px 0 0; border:0; min-width:0; display:grid; gap:16px; background:repeating-linear-gradient(90deg, var(--accent) 0 16px, transparent 16px 26px) no-repeat top left / 100% 3px }
 .block legend { float:left; width:100%; font:600 20px/1.2 var(--display); letter-spacing:-.02em }
 .block legend + * { clear:both }
 .field { display:grid; gap:6px }
@@ -208,17 +204,17 @@ main { padding-inline:var(--gutter); min-height:60vh }
 .empty-page { padding-block:clamp(48px, 8vw, 120px); display:grid; gap:20px; justify-items:start; max-width:640px }
 
 .done { padding-block:clamp(24px, 4vw, 56px) clamp(48px, 6vw, 96px); display:grid; gap:24px; justify-items:start }
-.done-number { font:800 clamp(64px, 14vw, 220px)/.9 var(--display); letter-spacing:-.05em; font-variant-numeric:tabular-nums }
+.done-number { font:800 clamp(56px, 10vw, 140px)/.9 var(--display); letter-spacing:-.05em; font-variant-numeric:tabular-nums }
 .done > .seam { width:100% }
 .done-lead { max-width:52ch; font-size:18px }
 .done .summary-lines { width:min(560px, 100%) }
 .done-delivery { color:var(--ink-soft) }
 
 /* Подвал */
-.footer { margin-top:clamp(96px, 12vw, 180px); padding:0 var(--gutter) 48px }
-.footer::before { content:''; display:block; height:3px; margin-bottom:28px; background:repeating-linear-gradient(90deg, var(--ink) 0 16px, transparent 16px 26px) }
-.footer-statement { font:700 clamp(44px, 7.4vw, 120px)/.95 var(--display); letter-spacing:-.045em }
-.footer-columns { display:grid; grid-template-columns:repeat(12, minmax(0, 1fr)); column-gap:var(--gutter); row-gap:24px; margin-top:48px; font-size:15px }
+.footer { margin-top:clamp(56px, 6vw, 88px); padding:0 var(--gutter) 32px }
+.footer::before { content:''; display:block; height:3px; margin-bottom:28px; background:repeating-linear-gradient(90deg, var(--accent) 0 16px, transparent 16px 26px) }
+.footer-statement { font:700 clamp(32px, 4.4vw, 64px)/1 var(--display); letter-spacing:-.04em }
+.footer-columns { display:grid; grid-template-columns:repeat(12, minmax(0, 1fr)); column-gap:var(--gutter); row-gap:24px; margin-top:28px; font-size:15px }
 .footer-columns > div { grid-column:span 3 }
 .footer-columns > div:first-child { grid-column:1 / span 4 }
 .footer-columns h2 { margin-bottom:8px; font-size:15px; font-weight:600 }
@@ -226,28 +222,25 @@ main { padding-inline:var(--gutter); min-height:60vh }
 .footer-columns a { text-decoration:underline; text-underline-offset:4px; display:inline-block; min-height:32px; align-content:center }
 
 @media (max-width:1023px) {
-  .grid { grid-template-columns:repeat(2, minmax(0, 1fr)) }
-  .grid > .card, .grid > .card:nth-child(n) { grid-column:auto; margin-top:0 }
-  .grid > .card:nth-child(even) { margin-top:clamp(40px, 10vw, 96px) }
+  .grid { grid-template-columns:repeat(3, minmax(0, 1fr)) }
   .pdp-media { grid-column:1 / span 6 }
   .pdp-panel { grid-column:7 / span 6 }
   .checkout-form { grid-column:1 / span 12 }
   .summary { grid-column:1 / span 12; position:static; margin-top:32px; grid-row:1 }
   .checkout-form { grid-row:2 }
-  .hero-info p { grid-column:span 6 }
-  .hero-lead { grid-column:1 / -1 !important }
+  .hero-top { grid-template-columns:1fr; row-gap:16px }
+  .wordmark { font-size:31.3cqi }
+  .hero-info { padding-bottom:0 }
 }
 @media (max-width:767px) {
   :root { --header:56px }
   .header-nav { gap:8px; font-size:16px }
   .header-nav a { display:none }
-  .hero-info { grid-template-columns:1fr 1fr; padding-bottom:40px }
-  .hero-info p { grid-column:auto }
   .catalog-bar { gap:8px 16px }
   .catalog-count { margin-left:0; order:3 }
   .sort { margin-left:auto; order:2 }
   .filters { width:100%; gap:20px }
-  .grid { column-gap:12px; row-gap:40px }
+  .grid { grid-template-columns:repeat(2, minmax(0, 1fr)); column-gap:12px; row-gap:32px }
   .card-line { flex-direction:column; gap:2px; font-size:15px }
   .pdp { display:block }
   .pdp-media { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; margin-inline:calc(var(--gutter) * -1); gap:4px }
