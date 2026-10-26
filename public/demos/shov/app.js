@@ -1,4 +1,4 @@
-import { products, CATEGORIES, DELIVERY, PICKUP_POINTS, MAX_QTY } from './data.js';
+import { products, CATEGORIES, DELIVERY, PICKUP_POINTS, MAX_QTY, ABOUT, TERMS, SIZE_TABLES, FAQ } from './data.js';
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -119,12 +119,54 @@ function renderCatalog(category) {
         <label class="sort"><span class="sr-only">Сортировка</span><select data-sort>${Object.entries(SORTS).map(([key, label]) => `<option value="${key}"${key === sortOrder ? ' selected' : ''}>${label}</option>`).join('')}</select></label>
       </div>
       <ol class="grid">${list.map((product, index) => productCard(product, index, '(min-width: 1024px) 34vw, 50vw')).join('')}</ol>
-    </section>`;
+    </section>${category ? '' : homeSections()}`;
   $('[data-sort]', app).addEventListener('change', event => {
     sortOrder = event.target.value in SORTS ? event.target.value : 'default';
     renderCatalog(category);
     $('[data-sort]', app).focus();
   });
+}
+
+/* Разделы под каталогом: показываются только на главной, в разделах каталога их нет. */
+function sizeTable({ title, head, rows }) {
+  return `<div class="size-table">
+    <h3>${title}</h3>
+    <div class="table-wrap" role="region" aria-label="Таблица размеров: ${title}" tabindex="0">
+      <table>
+        <thead><tr>${head.map(cell => `<th scope="col">${cell}</th>`).join('')}</tr></thead>
+        <tbody>${rows.map(([size, ...rest]) => `<tr><th scope="row">${size}</th>${rest.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function homeSections() {
+  const [aboutImage, aboutAlt] = ABOUT.image;
+  return `
+    <section class="about" aria-labelledby="about-title">
+      <figure class="about-media">${picture(aboutImage, aboutAlt, '(min-width: 1024px) 40vw, 100vw')}</figure>
+      <div class="about-copy">
+        <h2 id="about-title">${ABOUT.title}</h2>
+        ${ABOUT.paragraphs.map(text => `<p>${text}</p>`).join('')}
+        <a class="button" href="#/c/clothes">Смотреть одежду</a>
+      </div>
+    </section>
+    <section class="terms" aria-labelledby="terms-title">
+      <div class="seam" aria-hidden="true"></div>
+      <h2 id="terms-title">Покупать удобно</h2>
+      <dl class="terms-list">${TERMS.map(([term, text]) => `<div><dt>${term}</dt><dd>${text}</dd></div>`).join('')}</dl>
+    </section>
+    <section class="sizes-guide" aria-labelledby="sizes-title">
+      <div class="seam" aria-hidden="true"></div>
+      <h2 id="sizes-title">Таблицы размеров</h2>
+      <div class="size-tables">${sizeTable(SIZE_TABLES.clothes)}${sizeTable(SIZE_TABLES.shoes)}</div>
+      <p class="size-tip">${SIZE_TABLES.tip}</p>
+    </section>
+    <section class="faq" aria-labelledby="faq-title">
+      <div class="seam" aria-hidden="true"></div>
+      <h2 id="faq-title">Частые вопросы</h2>
+      <div class="faq-list">${FAQ.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join('')}</div>
+    </section>`;
 }
 
 function plural(n, one, few, many) {
