@@ -18,15 +18,15 @@ const graph = buildGraph({ path: Astro.url.pathname, title, description, extra: 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#f4f4f2" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#151518" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#151518" />
     <script is:inline>
+      // Сайт открывается в тёмной теме на всех устройствах. Светлая включается только переключателем и запоминается.
       (() => {
-        let theme;
-        try { theme = localStorage.getItem('akhan-theme'); } catch {}
-        if (theme !== 'light' && theme !== 'dark') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        let theme = 'dark';
+        try { if (localStorage.getItem('akhan-theme-v2') === 'light') theme = 'light'; } catch {}
         document.documentElement.dataset.theme = theme;
+        if (theme === 'light') document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#f4f4f2');
       })();
     </script>
     <title>{title}</title>

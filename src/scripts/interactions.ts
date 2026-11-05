@@ -1,5 +1,6 @@
 const root = document.documentElement;
-const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+const themeStorageKey = 'akhan-theme-v2';
+const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const themeButtons = document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]');
 
@@ -15,13 +16,14 @@ function updateThemeControls() {
 
 function applyTheme(theme: string) {
   root.dataset['theme'] = theme;
+  themeColor?.setAttribute('content', theme === 'light' ? '#f4f4f2' : '#151518');
   updateThemeControls();
 }
 
 function toggleTheme() {
   const next = root.dataset['theme'] === 'dark' ? 'light' : 'dark';
   applyTheme(next);
-  try { localStorage.setItem('akhan-theme', next); } catch { /* Тема работает и без хранилища. */ }
+  try { localStorage.setItem(themeStorageKey, next); } catch { /* Тема работает и без хранилища. */ }
 }
 
 themeButtons.forEach(button => {
@@ -30,14 +32,9 @@ themeButtons.forEach(button => {
 });
 updateThemeControls();
 requestAnimationFrame(() => root.classList.add('theme-ready'));
-systemTheme.addEventListener('change', event => {
-  let stored: string | null = null;
-  try { stored = localStorage.getItem('akhan-theme'); } catch { /* Системная тема остаётся доступной. */ }
-  if (stored !== 'light' && stored !== 'dark') applyTheme(event.matches ? 'dark' : 'light');
-});
 window.addEventListener('storage', event => {
-  if (event.key !== 'akhan-theme') return;
-  applyTheme(event.newValue === 'dark' || event.newValue === 'light' ? event.newValue : systemTheme.matches ? 'dark' : 'light');
+  if (event.key !== themeStorageKey) return;
+  applyTheme(event.newValue === 'light' ? 'light' : 'dark');
 });
 
 const dialog = document.querySelector<HTMLDialogElement>('#command-palette');
