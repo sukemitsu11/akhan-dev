@@ -1,0 +1,31 @@
+# SITE_ADDRESS задаётся в docker-compose.yml.
+# Домен (akhan.dev): Caddy сам получит и будет продлевать сертификат.
+# ":80": обычный HTTP, например для проверки по IP до подключения домена.
+{$SITE_ADDRESS::80} {
+	root * /srv
+	encode zstd gzip
+
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+
+	# Файлы в /_astro/ имеют хеш в имени и не меняются.
+	@hashed path /_astro/*
+	header @hashed Cache-Control "public, max-age=31536000, immutable"
+
+	# Превью, иконки и манифест: кеш на сутки, чтобы замена файла доходила быстро.
+	@static path /og.png /favicon.svg /favicon-48.png /apple-touch-icon.png /icon-192.png /icon-512.png /site.webmanifest
+	header @static Cache-Control "public, max-age=86400"
+
+	file_server
+
+	handle_errors {
+		@notfound expression {err.status_code} == 404
+		rewrite @notfound /404.html
+		file_server {
+			status 404
+		}
+	}
+}

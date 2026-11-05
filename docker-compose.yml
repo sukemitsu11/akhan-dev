@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    container_name: akhan-dev
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      # Домен для HTTPS. Пока домен не направлен на сервер, поставьте ":80".
+      SITE_ADDRESS: ${SITE_ADDRESS:-akhan.dev}
+    volumes:
+      # Сертификаты и настройки Caddy переживают пересборку контейнера.
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
