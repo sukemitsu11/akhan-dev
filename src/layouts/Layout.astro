@@ -5,19 +5,13 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import CommandPalette from '../components/CommandPalette.astro';
 import AmbientBackground from '../components/AmbientBackground.astro';
-interface Props { title?: string; noindex?: boolean; }
-const { title = `${siteConfig.name} | ${siteConfig.role}`, noindex = false } = Astro.props;
+import { buildGraph } from '../lib/seo';
+interface Props { title?: string; description?: string; noindex?: boolean; schema?: Record<string, unknown>[]; }
+const { title = siteConfig.title, description = siteConfig.description, noindex = false, schema = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, siteConfig.url);
 const ogImage = new URL('/og.png', siteConfig.url);
-const person = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: siteConfig.name,
-  jobTitle: siteConfig.role,
-  description: siteConfig.description,
-  url: siteConfig.url,
-  sameAs: [siteConfig.github, siteConfig.telegram],
-};
+const ogImageAlt = `${siteConfig.name}. ${siteConfig.role}.`;
+const graph = buildGraph({ path: Astro.url.pathname, title, description, extra: schema });
 ---
 <!doctype html>
 <html lang="ru">
@@ -36,26 +30,35 @@ const person = {
       })();
     </script>
     <title>{title}</title>
-    <meta name="description" content={siteConfig.description} />
+    <meta name="description" content={description} />
     <meta name="author" content={siteConfig.name} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <meta name="application-name" content={siteConfig.brand} />
+    <meta name="apple-mobile-web-app-title" content={siteConfig.brand} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content={siteConfig.name} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={`${siteConfig.name}. ${siteConfig.role}.`} />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={siteConfig.description} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <script type="application/ld+json" set:html={JSON.stringify(person).replace(/</g, '\\u003c')} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+    <script type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
   </head>
   <body id="top">
     <AmbientBackground />
