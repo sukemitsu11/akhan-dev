@@ -2,7 +2,7 @@
 export const siteConfig = {
   name: 'Артем Хан',
   initials: 'ах',
-  brand: 'akhan.dev',
+  brand: 'akhandev.ru',
   role: 'Разработчик полного цикла',
   /** Заголовок главной страницы в поиске и в превью (до 60 символов). */
   title: 'Артем Хан | Разработка сайтов, Telegram-ботов, автоматизация',
@@ -13,7 +13,7 @@ export const siteConfig = {
   telegram: 'https://t.me/akhan_dev',
   github: 'https://github.com/gr1nder05',
   source: 'https://github.com/gr1nder05/akhan-dev',
-  url: 'https://akhan.dev',
+  url: 'https://akhandev.ru',
   available: true,
   availability: 'Открыт к интересным проектам',
   copyrightYear: 2026,

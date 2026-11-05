@@ -8,8 +8,8 @@ services:
       - "443:443"
       - "443:443/udp"
     environment:
-      # Домен для HTTPS. Пока домен не направлен на сервер, поставьте ":80".
-      SITE_ADDRESS: ${SITE_ADDRESS:-akhan.dev}
+      # Домен сайта. Его A-записи и записи для www должны указывать на этот сервер.
+      DOMAIN: ${DOMAIN:-akhandev.ru}
     volumes:
       # Сертификаты и настройки Caddy переживают пересборку контейнера.
       - caddy_data:/data

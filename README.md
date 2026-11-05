@@ -26,7 +26,7 @@ npm run preview # Просмотр production-сборки
 
 `src/config.ts` содержит имя, роль, город, Telegram, GitHub, адрес сайта, ссылку на исходники и доступность для проектов. Объект `content` в этом же файле содержит все тексты о себе, подписи интерфейса, навигацию и категории стека. Кнопки обсуждения в первом экране и тарифах используют единый `siteConfig.telegram`.
 
-Ваши значения уже внесены: **Артем Хан**, Ростов-на-Дону, `https://t.me/akhan_dev`, `https://akhan.dev`. При смене домена обновите `siteConfig.url`: из него автоматически формируются canonical, Open Graph URL, robots.txt, sitemap.xml и JSON-LD Person.
+Ваши значения уже внесены: **Артем Хан**, Ростов-на-Дону, `https://t.me/akhan_dev`, `https://akhandev.ru`. При смене домена обновите `siteConfig.url`: из него автоматически формируются canonical, Open Graph URL, robots.txt, sitemap.xml и JSON-LD Person.
 
 В `public/og.png` находится готовая картинка для социальных сетей 1200 × 630. При смене имени/роли обновите и изображение. Значок сайта: `public/favicon.svg`. Портрет: `src/assets/profile/artem-khan.png`; Astro создаёт оптимизированные WebP и адаптивные размеры. Кадрирование и приглушение цвета настраиваются в `.profile-portrait` в CSS, исходная фотография сохранена.
 

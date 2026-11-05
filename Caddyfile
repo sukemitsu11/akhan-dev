@@ -1,7 +1,12 @@
-# SITE_ADDRESS задаётся в docker-compose.yml.
-# Домен (akhan.dev): Caddy сам получит и будет продлевать сертификат.
-# ":80": обычный HTTP, например для проверки по IP до подключения домена.
-{$SITE_ADDRESS::80} {
+# DOMAIN задаётся в docker-compose.yml (по умолчанию akhandev.ru).
+# Caddy сам получит и будет продлевать сертификаты для домена и для www.
+
+# www перенаправляется на основной адрес, чтобы в поиске не было дубликатов сайта.
+www.{$DOMAIN:localhost} {
+	redir https://{$DOMAIN:localhost}{uri} permanent
+}
+
+{$DOMAIN:localhost} {
 	root * /srv
 	encode zstd gzip
 
