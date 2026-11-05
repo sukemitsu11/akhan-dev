@@ -1,5 +1,10 @@
+# Имя проекта фиксировано, чтобы том с сертификатами не менялся при переносе файла в другую папку.
+name: akhan-dev
+
 services:
   web:
+    image: gr1nder005/akhandev:latest
+    # Локальная сборка нужна только разработчику: docker compose build
     build: .
     container_name: akhan-dev
     restart: unless-stopped
@@ -11,7 +16,7 @@ services:
       # Домен сайта. Его A-записи и записи для www должны указывать на этот сервер.
       DOMAIN: ${DOMAIN:-akhandev.ru}
     volumes:
-      # Сертификаты и настройки Caddy переживают пересборку контейнера.
+      # Сертификаты и настройки Caddy переживают обновление образа.
       - caddy_data:/data
       - caddy_config:/config
 
