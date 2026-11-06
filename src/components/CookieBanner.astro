@@ -1,31 +1,31 @@
-<aside class="cookie-banner" data-cookie-banner aria-labelledby="cookie-title" hidden>
-  <h2 id="cookie-title" tabindex="-1">Cookie и статистика</h2>
+<aside class="consent-panel" data-consent-panel aria-labelledby="consent-title" hidden>
+  <h2 id="consent-title" tabindex="-1">Cookie и статистика</h2>
   <p>Я использую Яндекс Метрику, чтобы понимать, откуда приходят на сайт. Она ставит cookie и записывает действия на странице. Включу её только с вашего согласия, без неё сайт работает так же.</p>
-  <p class="cookie-status" data-consent-status role="status" hidden></p>
-  <div class="cookie-actions">
+  <p class="consent-note" data-consent-status role="status" hidden></p>
+  <div class="consent-actions">
     <button type="button" class="text-button" data-consent="granted">Принять</button>
     <button type="button" class="text-button" data-consent="denied">Отказаться</button>
   </div>
-  <a class="cookie-link" href="/privacy/">Политика конфиденциальности</a>
+  <a class="consent-link" href="/privacy/">Политика конфиденциальности</a>
 </aside>
 
 <style>
-  .cookie-banner { position:fixed; z-index:18; left:24px; bottom:24px; width:min(440px, calc(100vw - 48px)); padding:20px; background:var(--dialog); border:1px solid var(--line); border-radius:4px; box-shadow:0 12px 40px rgb(0 0 0 / 28%); display:grid; gap:12px }
-  .cookie-banner[hidden] { display:none }
+  .consent-panel { position:fixed; z-index:18; left:24px; bottom:24px; width:min(440px, calc(100vw - 48px)); padding:20px; background:var(--dialog); border:1px solid var(--line); border-radius:4px; box-shadow:0 12px 40px rgb(0 0 0 / 28%); display:grid; gap:12px }
+  .consent-panel[hidden] { display:none }
   h2 { font-size:16px; font-weight:550; line-height:1.3; letter-spacing:-.2px }
   p { color:var(--secondary); font-size:13px; line-height:1.7 }
-  .cookie-status { color:var(--text); font:11px/1.6 var(--mono) }
-  .cookie-actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px }
-  .cookie-actions button { min-height:46px; background:transparent; color:var(--text); cursor:pointer }
-  .cookie-actions button:hover { background:var(--surface) }
-  .cookie-link { justify-self:start; display:inline-flex; align-items:center; min-height:44px; margin-block:-8px -12px; font-size:12px; color:var(--muted); text-decoration:underline; text-underline-offset:4px }
-  .cookie-link:hover { color:var(--text) }
+  .consent-note { color:var(--text); font:11px/1.6 var(--mono) }
+  .consent-actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px }
+  .consent-actions button { min-height:46px; background:transparent; color:var(--text); cursor:pointer }
+  .consent-actions button:hover { background:var(--surface) }
+  .consent-link { justify-self:start; display:inline-flex; align-items:center; min-height:44px; margin-block:-8px -12px; font-size:12px; color:var(--muted); text-decoration:underline; text-underline-offset:4px }
+  .consent-link:hover { color:var(--text) }
   @media (prefers-reduced-motion:no-preference) {
-    .cookie-banner { animation:cookie-in 260ms cubic-bezier(.2,.8,.2,1) both }
-    @keyframes cookie-in { from { opacity:0; transform:translateY(12px) } }
+    .consent-panel { animation:consent-in 260ms cubic-bezier(.2,.8,.2,1) both }
+    @keyframes consent-in { from { opacity:0; transform:translateY(12px) } }
   }
   @media (max-width:540px) {
-    .cookie-banner { left:12px; right:12px; bottom:12px; width:auto; padding:16px }
+    .consent-panel { left:12px; right:12px; bottom:12px; width:auto; padding:16px }
   }
 </style>
 
@@ -36,8 +36,8 @@
   type YmFunction = { (...args: unknown[]): void; a?: IArguments[]; l?: number };
   declare global { interface Window { ym?: YmFunction } }
 
-  const banner = document.querySelector<HTMLElement>('[data-cookie-banner]');
-  const heading = document.querySelector<HTMLElement>('#cookie-title');
+  const banner = document.querySelector<HTMLElement>('[data-consent-panel]');
+  const heading = document.querySelector<HTMLElement>('#consent-title');
   const status = document.querySelector<HTMLElement>('[data-consent-status]');
   const isLocalHost = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) || location.hostname.endsWith('.localhost');
   let metrikaLoaded = false;
@@ -75,6 +75,9 @@
     document.cookie.split(';').map(part => part.split('=')[0]?.trim() ?? '').filter(name => name.startsWith('_ym')).forEach(name => {
       domains.forEach(domain => { document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domain ? `; domain=${domain}` : ''}`; });
     });
+    try {
+      Object.keys(localStorage).filter(key => key.startsWith('_ym')).forEach(key => localStorage.removeItem(key));
+    } catch { /* Хранилище недоступно: удалять нечего. */ }
   }
 
   function updateStatus(choice: Choice | null) {
@@ -115,7 +118,7 @@
   banner?.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach(button => {
     button.addEventListener('click', () => decide(button.dataset['consent'] === 'granted' ? 'granted' : 'denied'));
   });
-  document.querySelectorAll<HTMLElement>('[data-cookie-settings]').forEach(button => button.addEventListener('click', () => show(true)));
+  document.querySelectorAll<HTMLElement>('[data-consent-settings]').forEach(button => button.addEventListener('click', () => show(true)));
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && banner && !banner.hidden && readChoice() !== null) hide();
   });
