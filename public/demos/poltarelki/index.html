@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Полтарелки - здоровая еда с доставкой по России</title>
+  <meta name="description" content="Демо сервиса доставки здоровой еды по всей России: меню, расчёт рациона и проверка срока доставки по городу.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#00703c">
+  <link rel="icon" href="/demos/poltarelki/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/demos/poltarelki/assets/sofia-condensed-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/demos/poltarelki/styles.css">
+  <link rel="stylesheet" href="/demos/concept.css">
+  <script src="/demos/concept.js" defer></script>
+  <script type="module" src="/demos/poltarelki/home.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="head"><div class="wrap">
+    <header class="top">
+      <a class="logo" href="/demos/poltarelki/index.html" aria-current="page"><i aria-hidden="true"></i>Полтарелки</a>
+      <nav class="nav" aria-label="Основная">
+        <a href="/demos/poltarelki/menu.html">Меню</a>
+        <a href="/demos/poltarelki/plan.html">Рацион</a>
+        <a href="/demos/poltarelki/delivery.html">Доставка</a>
+        <a href="/demos/poltarelki/order.html">Заказ</a>
+      </nav>
+    </header>
+  </div></div>
+  <main id="main">
+    <section class="hero g" data-veg="hero">
+      <div class="wrap" style="width:100%">
+        <div class="hero-text">
+          <h1>Здоровая еда в любой город России</h1>
+          <p>Половина каждой тарелки это овощи. Готовим, замораживаем и привозим за 1-9 дней.</p>
+          <div class="hero-acts">
+            <a class="btn" href="/demos/poltarelki/plan.html">Рассчитать рацион</a>
+            <a class="btn btn-line" href="/demos/poltarelki/menu.html">Смотреть меню</a>
+          </div>
+        </div>
+      </div>
+      <div class="plate" aria-hidden="true"><span><img src="/demos/poltarelki/assets/hero.webp" width="1100" height="1100" alt="" fetchpriority="high"></span></div>
+    </section>
+    <section class="band" data-veg="rule"><div class="wrap rule">
+      <div class="half" role="img" aria-label="Тарелка: половина овощи, четверть белок, четверть цельные злаки"><b class="h1">Овощи</b><b class="h2">Белок</b><b class="h3">Злаки</b></div>
+      <div>
+        <h2>Откуда такое название</h2>
+        <p class="lead">Мы собираем каждое блюдо по одному простому правилу, поэтому считать калории приходится меньше.</p>
+        <ul class="rule-list">
+          <li><b>1/2</b><span>Овощи и зелень: клетчатка и чувство сытости.</span></li>
+          <li><b>1/4</b><span>Белок: рыба, птица, мясо, бобовые или тофу.</span></li>
+          <li><b>1/4</b><span>Цельные злаки: киноа, бурый рис, овсянка.</span></li>
+        </ul>
+      </div>
+    </div></section>
+    <section class="band g" data-veg="line"><div class="wrap">
+      <h2>Вся Россия на одной линии</h2>
+      <p class="lead">Три кухни и десятки городов. Чем дальше от кухни, тем дольше путь, но еда всё время в холоде.</p>
+      <div id="line"></div>
+      <p class="line-legend"><i aria-hidden="true"></i>Кухни: Москва, Екатеринбург, Новосибирск</p>
+      <form class="check" id="check" novalidate>
+        <label for="city">Ваш город</label>
+        <input id="city" name="city" list="cities" autocomplete="address-level2" aria-describedby="city-err" placeholder="Например, Томск">
+        <datalist id="cities"></datalist>
+        <button class="btn" type="submit">Узнать срок</button>
+        <p class="err" id="city-err" role="alert" hidden></p>
+      </form>
+      <div id="answer" aria-live="polite"></div>
+    </div></section>
+    <section class="band" data-veg="menu"><div class="wrap">
+      <h2>Что сегодня в меню</h2>
+      <div class="dishes" id="dishes"></div>
+      <a class="link" style="margin-top:20px" href="/demos/poltarelki/menu.html">Всё меню</a>
+    </div></section>
+    <section class="band d" data-veg="quotes"><div class="wrap">
+      <h2>Едят от края до края</h2>
+      <ul class="quotes" id="quotes"></ul>
+    </div></section>
+    <dialog id="dlg" aria-labelledby="dlg-h"></dialog>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="/demos/poltarelki/index.html"><i aria-hidden="true"></i>Полтарелки</a>
+      <div class="foot-links"><a href="mailto:hello@poltarelki.example">hello@poltarelki.example</a><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+    </div>
+  </footer>
+  <footer class="akhan-concept-footer"><p>Концепт-сайт. Сервис, цены, кухни и отзывы вымышлены, заказы не отправляются. Фото: Unsplash. Дизайн и разработка: <a href="/">akhandev</a></p></footer>
+</body>
+</html>

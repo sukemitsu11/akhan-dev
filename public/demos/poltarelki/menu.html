@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Меню недели - Полтарелки</title>
+  <meta name="description" content="Демо сервиса здоровой еды: меню с калорийностью и составом каждого блюда, фильтры по ограничениям.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#00703c">
+  <link rel="icon" href="/demos/poltarelki/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/demos/poltarelki/assets/sofia-condensed-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/demos/poltarelki/styles.css">
+  <link rel="stylesheet" href="/demos/concept.css">
+  <script src="/demos/concept.js" defer></script>
+  <script type="module" src="/demos/poltarelki/menu.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="head"><div class="wrap">
+    <header class="top">
+      <a class="logo" href="/demos/poltarelki/index.html"><i aria-hidden="true"></i>Полтарелки</a>
+      <nav class="nav" aria-label="Основная">
+        <a href="/demos/poltarelki/menu.html" aria-current="page">Меню</a>
+        <a href="/demos/poltarelki/plan.html">Рацион</a>
+        <a href="/demos/poltarelki/delivery.html">Доставка</a>
+        <a href="/demos/poltarelki/order.html">Заказ</a>
+      </nav>
+    </header>
+  </div></div>
+  <main id="main">
+    <section class="g" data-veg="title"><div class="wrap page-title"><h1>Меню недели</h1><p>На каждом блюде написаны калории, белки, жиры и углеводы. Нажмите на блюдо, чтобы увидеть состав.</p></div></section>
+    <section><div class="wrap" style="padding-block:clamp(24px,3vw,44px) clamp(56px,6vw,96px)">
+      <div class="filters">
+        <div class="seg" id="f-meal" role="group" aria-label="Приём пищи"></div>
+        <div class="seg" id="f-diet" role="group" aria-label="Ограничения"></div>
+      </div>
+      <p class="visually-hidden" id="count" aria-live="polite"></p>
+      <div class="dishes" id="dishes"></div>
+    </div></section>
+    <dialog id="dlg" aria-labelledby="dlg-h"></dialog>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="/demos/poltarelki/index.html"><i aria-hidden="true"></i>Полтарелки</a>
+      <div class="foot-links"><a href="mailto:hello@poltarelki.example">hello@poltarelki.example</a><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+    </div>
+  </footer>
+  <footer class="akhan-concept-footer"><p>Концепт-сайт. Сервис, цены, кухни и отзывы вымышлены, заказы не отправляются. Фото: Unsplash. Дизайн и разработка: <a href="/">akhandev</a></p></footer>
+</body>
+</html>

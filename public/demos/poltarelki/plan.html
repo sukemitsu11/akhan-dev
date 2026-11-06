@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Расчёт рациона - Полтарелки</title>
+  <meta name="description" content="Демо сервиса здоровой еды: расчёт калорий по росту, весу и активности и пересчёт цены рациона.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#00703c">
+  <link rel="icon" href="/demos/poltarelki/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/demos/poltarelki/assets/sofia-condensed-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/demos/poltarelki/styles.css">
+  <link rel="stylesheet" href="/demos/concept.css">
+  <script src="/demos/concept.js" defer></script>
+  <script type="module" src="/demos/poltarelki/plan.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="head"><div class="wrap">
+    <header class="top">
+      <a class="logo" href="/demos/poltarelki/index.html"><i aria-hidden="true"></i>Полтарелки</a>
+      <nav class="nav" aria-label="Основная">
+        <a href="/demos/poltarelki/menu.html">Меню</a>
+        <a href="/demos/poltarelki/plan.html" aria-current="page">Рацион</a>
+        <a href="/demos/poltarelki/delivery.html">Доставка</a>
+        <a href="/demos/poltarelki/order.html">Заказ</a>
+      </nav>
+    </header>
+  </div></div>
+  <main id="main">
+    <section class="g" data-veg="title"><div class="wrap page-title"><h1>Сколько вам нужно</h1><p>Считаем суточную норму по формуле Миффлина - Сан-Жеора и подбираем ближайший рацион. Это ориентир, а не назначение врача.</p></div></section>
+    <div class="wrap calc">
+      <form class="ctrls" id="form" novalidate>
+        <fieldset class="ctrl"><legend>Цель</legend><div class="opts wrap2" id="o-goal"></div></fieldset>
+        <fieldset class="ctrl"><legend>Пол</legend><div class="opts" id="o-sex"></div></fieldset>
+        <div class="nums">
+          <div class="field"><label for="age">Возраст, лет</label><input id="age" inputmode="numeric" value="32" aria-describedby="age-e"><span id="age-e" role="alert"></span></div>
+          <div class="field"><label for="height">Рост, см</label><input id="height" inputmode="numeric" value="172" aria-describedby="height-e"><span id="height-e" role="alert"></span></div>
+          <div class="field"><label for="weight">Вес, кг</label><input id="weight" inputmode="numeric" value="74" aria-describedby="weight-e"><span id="weight-e" role="alert"></span></div>
+        </div>
+        <fieldset class="ctrl"><legend>Активность</legend><div class="opts wrap2" id="o-act"></div></fieldset>
+        <fieldset class="ctrl"><legend>Питание</legend><div class="opts wrap2" id="o-diet"></div></fieldset>
+        <fieldset class="ctrl"><legend>На сколько дней</legend><div class="opts wrap2" id="o-term"></div></fieldset>
+        <div class="field"><label for="plan-city">Город доставки</label><input id="plan-city" list="cities" autocomplete="address-level2"><datalist id="cities"></datalist></div>
+      </form>
+      <aside class="result" aria-label="Ваш рацион">
+        <p class="result-kcal"><span id="r-kcal"></span> <small>ккал в день</small></p>
+        <p class="result-note" id="r-note"></p>
+        <div class="macro-bars" id="r-macros"></div>
+        <dl class="bill">
+          <div><dt id="r-days-l"></dt><dd id="r-food"></dd></div>
+          <div><dt>Скидка за срок</dt><dd id="r-off"></dd></div>
+          <div><dt id="r-ship-l"></dt><dd id="r-ship"></dd></div>
+          <div class="sum"><dt>Итого</dt><dd id="r-total"></dd></div>
+        </dl>
+        <p class="visually-hidden" aria-live="polite" id="r-live"></p>
+        <button class="btn" type="button" id="go">Оформить заказ</button>
+      </aside>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="/demos/poltarelki/index.html"><i aria-hidden="true"></i>Полтарелки</a>
+      <div class="foot-links"><a href="mailto:hello@poltarelki.example">hello@poltarelki.example</a><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+    </div>
+  </footer>
+  <footer class="akhan-concept-footer"><p>Концепт-сайт. Сервис, цены, кухни и отзывы вымышлены, заказы не отправляются. Фото: Unsplash. Дизайн и разработка: <a href="/">akhandev</a></p></footer>
+</body>
+</html>

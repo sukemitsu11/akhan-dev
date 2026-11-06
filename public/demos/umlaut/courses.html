@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Курсы и расчёт цены - Умлаут</title>
+  <meta name="description" content="Демо онлайн-школы языков: выберите язык, уровень, формат и срок, цена пересчитывается сразу.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#efeef6">
+  <link rel="icon" href="/demos/umlaut/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/demos/umlaut/assets/dela-gothic-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <script>try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('umlaut-lang');if(['en','es','fr','de'].indexOf(l)>-1)document.documentElement.dataset.lang=l}catch(e){}</script>
+  <link rel="stylesheet" href="/demos/umlaut/styles.css">
+  <link rel="stylesheet" href="/demos/concept.css">
+  <script src="/demos/concept.js" defer></script>
+  <script type="module" src="/demos/umlaut/courses.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="logo" href="/demos/umlaut/index.html" aria-label="Умлаут, на главную"><span class="logo-u">У</span>млаут</a>
+      <nav class="nav" aria-label="Основная">
+        <a href="/demos/umlaut/test.html">Тест</a>
+        <a href="/demos/umlaut/courses.html" aria-current="page">Курсы</a>
+        <a href="/demos/umlaut/teachers.html">Преподаватели</a>
+        <a href="/demos/umlaut/reviews.html">Отзывы</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="page-title">
+        <h1>Соберите свой курс</h1>
+        <p id="from-test">Цена занятия зависит от формата, цели и уровня. Занятие идёт 60 минут.</p>
+      </section>
+      <div class="calc">
+        <form class="ctrls" id="ctrls">
+          <fieldset class="ctrl"><legend>Язык</legend><div class="opts opts-4" id="o-lang"></div></fieldset>
+          <fieldset class="ctrl"><legend>Уровень сейчас</legend><div class="opts opts-5" id="o-level"></div></fieldset>
+          <fieldset class="ctrl"><legend>Курс</legend><div class="opts courses" id="o-course"></div><p class="level-note" id="course-note" hidden></p></fieldset>
+          <fieldset class="ctrl"><legend>Формат</legend><div class="opts opts-3 formats" id="o-format"></div></fieldset>
+          <fieldset class="ctrl"><legend>Занятий в неделю</legend><div class="opts opts-3" id="o-week"></div></fieldset>
+          <fieldset class="ctrl"><legend>На какой срок оплатить</legend><div class="opts opts-3" id="o-term"></div></fieldset>
+        </form>
+        <aside class="price on-field" aria-label="Расчёт цены">
+          <span class="ghost" id="p-ghost" aria-hidden="true"></span>
+          <p class="price-name" id="p-name"></p>
+          <p class="price-big" id="p-big"></p>
+          <p class="price-per">в месяц</p>
+          <dl>
+            <div><dt>Цена занятия</dt><dd id="p-lesson"></dd></div>
+            <div><dt>Занятий в месяц</dt><dd id="p-count"></dd></div>
+            <div><dt>Скидка</dt><dd id="p-discount"></dd></div>
+            <div><dt id="p-total-label"></dt><dd id="p-total"></dd></div>
+            <div><dt>Экономия</dt><dd id="p-save"></dd></div>
+          </dl>
+          <button class="btn btn-main" type="button" data-open>Записаться на пробное</button>
+          <p class="visually-hidden" aria-live="polite" id="p-live"></p>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <div class="price-bar">
+    <div><b id="bar-price"></b><small>в месяц</small></div>
+    <button class="btn" type="button" data-open>Записаться</button>
+  </div>
+  <dialog id="dlg" aria-labelledby="dlg-h">
+    <form class="dlg" id="dlg-form" method="dialog" novalidate>
+      <h2 id="dlg-h">Пробное занятие</h2>
+      <p class="dlg-sum" id="dlg-sum"></p>
+      <div class="field"><label for="f-name">Как к вам обращаться</label><input id="f-name" name="name" autocomplete="name" aria-describedby="e-name"><span id="e-name" role="alert"></span></div>
+      <div class="field"><label for="f-contact">Телефон или Telegram</label><input id="f-contact" name="contact" autocomplete="off" spellcheck="false" aria-describedby="e-contact"><span id="e-contact" role="alert"></span></div>
+      <div class="dlg-acts"><button class="btn" type="submit">Записаться на пробное</button><button class="btn btn-quiet" type="button" data-close>Закрыть</button></div>
+    </form>
+    <div class="dlg" id="dlg-done" hidden>
+      <h2 tabindex="-1" id="done-h">Заявка принята</h2>
+      <p>Это концепт-сайт, поэтому заявка никуда не отправлена и данные не сохранены.</p>
+      <div class="dlg-acts"><button class="btn" type="button" data-close>Закрыть</button></div>
+    </div>
+  </dialog>
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="/demos/umlaut/index.html"><span class="logo-u">У</span>млаут</a>
+      <div class="foot-links"><a href="mailto:hello@umlaut.example">hello@umlaut.example</a><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+    </div>
+  </footer>
+  <footer class="akhan-concept-footer"><p>Концепт-сайт. Школа, преподаватели, цены и отзывы вымышлены, заявки не отправляются. Фото: Unsplash. Дизайн и разработка: <a href="/">akhandev</a></p></footer>
+</body>
+</html>

@@ -5,7 +5,9 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import CommandPalette from '../components/CommandPalette.astro';
 import AmbientBackground from '../components/AmbientBackground.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { buildGraph } from '../lib/seo';
+import { metrikaId } from '../lib/analytics';
 interface Props { title?: string; description?: string; noindex?: boolean; schema?: Record<string, unknown>[]; }
 const { title = siteConfig.title, description = siteConfig.description, noindex = false, schema = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, siteConfig.url);
@@ -59,6 +61,10 @@ const graph = buildGraph({ path: Astro.url.pathname, title, description, extra: 
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={ogImageAlt} />
     <script type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+    <style>
+      .footer-button { display:inline-flex; align-items:center; min-height:44px; padding:0; border:0; background:none; color:inherit; font:10px var(--mono); cursor:pointer }
+      .footer-button:hover { color:var(--text) }
+    </style>
   </head>
   <body id="top">
     <AmbientBackground />
@@ -67,8 +73,14 @@ const graph = buildGraph({ path: Astro.url.pathname, title, description, extra: 
     <main class="page-width" id="main" tabindex="-1"><slot /></main>
     <footer class="site-footer page-width">
       <p>© {siteConfig.copyrightYear} {siteConfig.name}</p>
-      <div><span>{content.ui.builtWith}</span></div>
+      <div>
+        <a href="/privacy/">Конфиденциальность</a>
+        <button class="footer-button" type="button" data-cookie-settings>Настройки cookie</button>
+        <span>{content.ui.builtWith}</span>
+      </div>
     </footer>
+    <CookieBanner />
+    <noscript><div><img src={`https://mc.yandex.ru/watch/${metrikaId}`} style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <CommandPalette />
     <script src="../scripts/interactions.ts"></script>
   </body>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Доставка по России - Полтарелки</title>
+  <meta name="description" content="Демо сервиса здоровой еды: срок и стоимость доставки в любой город России и путь еды от кухни до двери.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#00703c">
+  <link rel="icon" href="/demos/poltarelki/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/demos/poltarelki/assets/sofia-condensed-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/demos/poltarelki/styles.css">
+  <link rel="stylesheet" href="/demos/concept.css">
+  <script src="/demos/concept.js" defer></script>
+  <script type="module" src="/demos/poltarelki/delivery.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="head"><div class="wrap">
+    <header class="top">
+      <a class="logo" href="/demos/poltarelki/index.html"><i aria-hidden="true"></i>Полтарелки</a>
+      <nav class="nav" aria-label="Основная">
+        <a href="/demos/poltarelki/menu.html">Меню</a>
+        <a href="/demos/poltarelki/plan.html">Рацион</a>
+        <a href="/demos/poltarelki/delivery.html" aria-current="page">Доставка</a>
+        <a href="/demos/poltarelki/order.html">Заказ</a>
+      </nav>
+    </header>
+  </div></div>
+  <main id="main">
+    <section class="g" data-veg="title"><div class="wrap page-title">
+      <h1>От Калининграда до Анадыря</h1>
+      <div id="line"></div>
+      <p class="line-legend"><i aria-hidden="true"></i>Кухни: Москва, Екатеринбург, Новосибирск</p>
+      <form class="check" id="check" novalidate>
+        <label for="city">Ваш город</label>
+        <input id="city" name="city" list="cities" autocomplete="address-level2" aria-describedby="city-err" placeholder="Например, Томск">
+        <datalist id="cities"></datalist>
+        <button class="btn" type="submit">Узнать срок</button>
+        <p class="err" id="city-err" role="alert" hidden></p>
+      </form>
+      <div id="answer" aria-live="polite"></div>
+    </div></section>
+    <section class="band"><div class="wrap">
+      <h2>Цена зависит от расстояния</h2>
+      <p class="lead">Считаем от ближайшей кухни, за один бокс на неделю еды. От 25&nbsp;000&nbsp;₽ за заказ доставка бесплатна.</p>
+      <ul class="tiers" id="tiers"></ul>
+    </div></section>
+    <section class="split g">
+      <img src="/demos/poltarelki/assets/boxes.webp" width="1100" height="1100" alt="Контейнеры с готовыми блюдами: рис, овощи и бобовые" loading="lazy">
+      <div class="split-body">
+        <h2 class="split-title">Как еда остаётся свежей</h2>
+        <ol class="steps steps-one">
+          <li><b>Готовим</b>Утром на одной из трёх кухонь и сразу раскладываем по порциям.</li>
+          <li><b>Замораживаем</b>Шоковая заморозка занимает меньше часа, поэтому овощи не теряют вкус и цвет.</li>
+          <li><b>Везём</b>Термобокс держит холод до 96 часов. На разогрев уйдёт 5 минут.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="/demos/poltarelki/index.html"><i aria-hidden="true"></i>Полтарелки</a>
+      <div class="foot-links"><a href="mailto:hello@poltarelki.example">hello@poltarelki.example</a><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+    </div>
+  </footer>
+  <footer class="akhan-concept-footer"><p>Концепт-сайт. Сервис, цены, кухни и отзывы вымышлены, заказы не отправляются. Фото: Unsplash. Дизайн и разработка: <a href="/">akhandev</a></p></footer>
+</body>
+</html>

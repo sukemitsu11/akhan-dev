@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тест уровня языка с разбором - Умлаут</title>
+  <meta name="description" content="Демо онлайн-школы языков: 8 вопросов, уровень от A1 до C1 и разбор каждого ответа.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#efeef6">
+  <link rel="icon" href="/demos/umlaut/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/demos/umlaut/assets/dela-gothic-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <script>try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('umlaut-lang');if(['en','es','fr','de'].indexOf(l)>-1)document.documentElement.dataset.lang=l}catch(e){}</script>
+  <link rel="stylesheet" href="/demos/umlaut/styles.css">
+  <link rel="stylesheet" href="/demos/concept.css">
+  <script src="/demos/concept.js" defer></script>
+  <script type="module" src="/demos/umlaut/test.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="logo" href="/demos/umlaut/index.html" aria-label="Умлаут, на главную"><span class="logo-u">У</span>млаут</a>
+      <nav class="nav" aria-label="Основная">
+        <a href="/demos/umlaut/test.html" aria-current="page">Тест</a>
+        <a href="/demos/umlaut/courses.html">Курсы</a>
+        <a href="/demos/umlaut/teachers.html">Преподаватели</a>
+        <a href="/demos/umlaut/reviews.html">Отзывы</a>
+      </nav>
+    </header>
+    <main id="main">
+      <div id="picker">
+        <section class="intro">
+          <h1>Какой у вас уровень?</h1>
+          <p>Выберите язык и ответьте на 8 вопросов. В конце разберём каждый ответ.</p>
+        </section>
+        <div class="tiles" role="group" aria-label="Язык теста">
+          <button class="tile l-en" type="button" data-pick="en"><span class="tile-glyph" aria-hidden="true" lang="en">th</span><span class="tile-name">Английский</span><span class="tile-hint"><i lang="en">think, this.</i> Кончик языка между зубами</span></button>
+          <button class="tile l-es" type="button" data-pick="es"><span class="tile-glyph" aria-hidden="true" lang="es">ñ</span><span class="tile-name">Испанский</span><span class="tile-hint"><i lang="es">España.</i> Мягкое нь, как в слове «коньяк»</span></button>
+          <button class="tile l-fr" type="button" data-pick="fr"><span class="tile-glyph" aria-hidden="true" lang="fr">ç</span><span class="tile-name">Французский</span><span class="tile-hint"><i lang="fr">français.</i> Всегда читается как с</span></button>
+          <button class="tile l-de" type="button" data-pick="de"><span class="tile-glyph" aria-hidden="true" lang="de">ü</span><span class="tile-name">Немецкий</span><span class="tile-hint"><i lang="de">für.</i> Губы как для у, а звук как и</span></button>
+        </div>
+        <section class="stairs-sec">
+          <h2>Как считаем уровень</h2>
+          <p>Вопросы идут от простых к сложным. Уровень зависит от числа верных ответов, а на пробном занятии его уточнит преподаватель.</p>
+          <ul class="stairs" id="stairs"></ul>
+        </section>
+      </div>
+      <div id="stage" hidden></div>
+    </main>
+  </div>
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="/demos/umlaut/index.html"><span class="logo-u">У</span>млаут</a>
+      <div class="foot-links"><a href="mailto:hello@umlaut.example">hello@umlaut.example</a><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+    </div>
+  </footer>
+  <footer class="akhan-concept-footer"><p>Концепт-сайт. Школа, преподаватели, цены и отзывы вымышлены, заявки не отправляются. Фото: Unsplash. Дизайн и разработка: <a href="/">akhandev</a></p></footer>
+</body>
+</html>

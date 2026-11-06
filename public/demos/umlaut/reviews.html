@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Отзывы учеников - Умлаут</title>
+  <meta name="description" content="Демо онлайн-школы языков: отзывы учеников с уровнем до и после обучения.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#efeef6">
+  <link rel="icon" href="/demos/umlaut/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/demos/umlaut/assets/dela-gothic-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <script>try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('umlaut-lang');if(['en','es','fr','de'].indexOf(l)>-1)document.documentElement.dataset.lang=l}catch(e){}</script>
+  <link rel="stylesheet" href="/demos/umlaut/styles.css">
+  <link rel="stylesheet" href="/demos/concept.css">
+  <script src="/demos/concept.js" defer></script>
+  <script type="module" src="/demos/umlaut/reviews.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="logo" href="/demos/umlaut/index.html" aria-label="Умлаут, на главную"><span class="logo-u">У</span>млаут</a>
+      <nav class="nav" aria-label="Основная">
+        <a href="/demos/umlaut/test.html">Тест</a>
+        <a href="/demos/umlaut/courses.html">Курсы</a>
+        <a href="/demos/umlaut/teachers.html">Преподаватели</a>
+        <a href="/demos/umlaut/reviews.html" aria-current="page">Отзывы</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="page-title">
+        <h1>С какого уровня и до какого</h1>
+        <p>Ученики рассказывают, с чем пришли, сколько занимались и что теперь могут.</p>
+      </section>
+      <div class="r-filters">
+        <div class="seg" id="f-lang" role="group" aria-label="Язык"></div>
+        <div class="seg" id="f-goal" role="group" aria-label="Цель"></div>
+      </div>
+      <p class="r-count" id="count" aria-live="polite"></p>
+      <div class="masonry" id="list"></div>
+    </main>
+  </div>
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="/demos/umlaut/index.html"><span class="logo-u">У</span>млаут</a>
+      <div class="foot-links"><a href="mailto:hello@umlaut.example">hello@umlaut.example</a><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+    </div>
+  </footer>
+  <footer class="akhan-concept-footer"><p>Концепт-сайт. Школа, преподаватели, цены и отзывы вымышлены, заявки не отправляются. Фото: Unsplash. Дизайн и разработка: <a href="/">akhandev</a></p></footer>
+</body>
+</html>

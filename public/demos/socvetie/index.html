@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Соцветие - цветочный магазин</title>
+  <meta name="description" content="Демо цветочного магазина: конструктор букета, атлас цветов сезона и заказ в два касания.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f2f5ef">
+  <link rel="icon" href="/demos/socvetie/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/demos/socvetie/assets/bona-nova-cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="/demos/socvetie/tones.js"></script>
+  <link rel="stylesheet" href="/demos/socvetie/styles.css">
+  <link rel="stylesheet" href="/demos/concept.css">
+  <script src="/demos/concept.js" defer></script>
+  <script type="module" src="/demos/socvetie/home.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="logo" href="/demos/socvetie/index.html" aria-current="page">Соцветие</a>
+      <nav class="nav" aria-label="Основная">
+        <a href="/demos/socvetie/catalog.html">Каталог</a>
+        <a href="/demos/socvetie/builder.html">Конструктор</a>
+        <a href="/demos/socvetie/atlas.html">Атлас</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="hero" id="hero">
+        <i class="tape tl" aria-hidden="true"></i><i class="tape tr" aria-hidden="true"></i><i class="tape bl" aria-hidden="true"></i><i class="tape br" aria-hidden="true"></i>
+        <div>
+          <h1>Букет, который вы соберёте сами</h1>
+          <p>Выбирайте цветы по стеблю и смотрите, как меняется букет. Заказ занимает два касания.</p>
+          <div class="hero-acts">
+            <a class="btn" href="/demos/socvetie/builder.html">Собрать букет</a>
+            <a class="btn btn-line" href="/demos/socvetie/catalog.html">Смотреть каталог</a>
+          </div>
+        </div>
+        <div class="hero-bq" id="hero-bq"></div>
+      </section>
+
+      <section class="sec">
+        <h2 id="season-title">Сейчас в сезоне</h2>
+        <div class="season-row" id="season" tabindex="0" role="group" aria-labelledby="season-title"></div>
+      </section>
+
+      <section class="sec">
+        <h2>Готовые букеты</h2>
+        <div class="cards" id="bouquets" style="margin-top:28px"></div>
+        <a class="link sec-more" href="/demos/socvetie/catalog.html?type=bouquet">Все букеты</a>
+      </section>
+
+      <section class="sec">
+        <div class="atlas-teaser" id="atlas-teaser">
+          <i class="tape tl" aria-hidden="true"></i><i class="tape br" aria-hidden="true"></i>
+          <a class="mini-book" href="/demos/socvetie/atlas.html" aria-label="Открыть атлас цветов сезона">
+            <span class="mini-cover"><b>Атлас цветов сезона</b><img src="/demos/socvetie/assets/anemone-b.webp" width="360" height="360" alt="" loading="lazy"><span>Соцветие</span></span>
+          </a>
+          <div>
+            <h2>Книга о том, что цветёт сейчас</h2>
+            <p>Четыре времени года и четырнадцать цветов: когда они появляются, сколько стоят в вазе и как за ними ухаживать.</p>
+            <a class="btn" href="/demos/socvetie/atlas.html">Листать атлас</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>Заказ в два касания</h2>
+        <ol class="taps">
+          <li class="tap"><i aria-hidden="true">1</i><b>Нажмите «Заказать»</b><p>Адрес, время и карта уже подставлены из прошлого заказа.</p></li>
+          <li class="tap"><i aria-hidden="true">2</i><b>Подтвердите</b><p>Всё. Менять детали можно, но совсем не обязательно.</p></li>
+        </ol>
+        <button class="btn try" type="button" data-order="pudra">Заказать букет «Пудра»</button>
+      </section>
+    </main>
+  </div>
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="/demos/socvetie/index.html">Соцветие</a>
+      <div class="foot-links"><a href="mailto:hello@socvetie.example">hello@socvetie.example</a><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+    </div>
+  </footer>
+  <footer class="akhan-concept-footer"><p>Концепт-сайт. Магазин, цены, букеты и адрес доставки вымышлены, заказы не отправляются. Фото: Unsplash. Дизайн и разработка: <a href="/">akhandev</a></p></footer>
+</body>
+</html>

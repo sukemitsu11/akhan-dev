@@ -4,6 +4,9 @@ import kontur from '../assets/projects/kontur.png';
 import gran from '../assets/projects/gran.png';
 import list from '../assets/projects/list.png';
 import shov from '../assets/projects/shov.png';
+import umlaut from '../assets/projects/umlaut.png';
+import socvetie from '../assets/projects/socvetie.png';
+import poltarelki from '../assets/projects/poltarelki.png';
 
 export interface Project {
   id: string;
@@ -20,6 +23,27 @@ export interface Project {
 
 /** Демонстрационные интерфейсы. Названия компаний, адреса и контакты вымышлены. */
 export const projects: Project[] = [
+  {
+    id: 'poltarelki', name: 'Полтарелки', category: 'Доставка здоровой еды',
+    description: 'Сервис доставки по всей России в контрастном зелёном и белом. Срок и цена по городу, расчёт рациона по калориям и оформление заказа.',
+    technologies: ['HTML', 'CSS', 'JavaScript'], image: poltarelki,
+    previewLabel: 'poltarelki.example', demo: '/demos/poltarelki/index.html', year: '2026',
+    scope: ['Срок и цена доставки от ближайшей кухни', 'Расчёт нормы калорий и цены рациона', 'Меню с фильтрами и составом блюд'],
+  },
+  {
+    id: 'socvetie', name: 'Соцветие', category: 'Цветочный магазин',
+    description: 'Магазин в пастельных тонах со своей страницей и цветом для каждого букета. Конструктор букета, атлас-книга и заказ в два касания.',
+    technologies: ['HTML', 'CSS', 'JavaScript'], image: socvetie,
+    previewLabel: 'socvetie.example', demo: '/demos/socvetie/index.html', year: '2026',
+    scope: ['Конструктор: букет меняется с каждым стеблем', 'Атлас цветов, который листается как книга', 'Каталог и заказ в два касания'],
+  },
+  {
+    id: 'umlaut', name: 'Умлаут', category: 'Онлайн-школа языков',
+    description: 'Сайт школы, где выбранный язык перекрашивает все страницы. Тест уровня с разбором ответов, калькулятор курса, преподаватели и отзывы.',
+    technologies: ['HTML', 'CSS', 'JavaScript'], image: umlaut,
+    previewLabel: 'umlaut.example', demo: '/demos/umlaut/index.html', year: '2026',
+    scope: ['Тест на 4 языках с уровнем и разбором', 'Пересчёт цены курса по шести параметрам', 'Фильтры преподавателей и отзывов'],
+  },
   {
     id: 'shov', name: 'Шов', category: 'Магазин одежды и обуви',
     description: 'Интернет-магазин с каталогом, выбором размера, корзиной и оформлением заказа. Оплата тестовая, без регистрации.',

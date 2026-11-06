@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config';
+const title = `Политика конфиденциальности | ${siteConfig.name}`;
+const description = `Какие данные собирает сайт ${siteConfig.brand}, зачем и как отказаться от сбора.`;
+---
+<Layout title={title} description={description}>
+  <article class="privacy">
+    <a class="back-link" href="/">На главную</a>
+    <h1>Политика конфиденциальности</h1>
+    <p class="updated">Редакция от 6 ноября 2026</p>
+    <p class="lead">Сайт {siteConfig.brand} принадлежит {siteConfig.name}. Здесь описано, какие данные собирает сайт, зачем и как от этого отказаться.</p>
+
+    <section aria-labelledby="no-consent">
+      <h2 id="no-consent">Что происходит без вашего согласия</h2>
+      <p>На сайте нет форм и регистрации, поэтому он не просит ваше имя, телефон или почту. Связаться со мной можно через Telegram: ссылка открывает мессенджер, и дальше действуют его правила.</p>
+      <p>В вашем браузере сохраняются технические настройки: выбранная тема оформления и ваш ответ про cookie. Они нужны для работы сайта и никому не передаются.</p>
+    </section>
+
+    <section aria-labelledby="with-consent">
+      <h2 id="with-consent">Что происходит с вашего согласия</h2>
+      <p>Если вы нажмёте «Принять», подключится сервис Яндекс Метрика (оператор ООО «ЯНДЕКС»). Он ставит cookie и собирает:</p>
+      <ul>
+        <li>IP-адрес, сведения о браузере, устройстве и экране;</li>
+        <li>источник перехода: поиск, соцсеть, ссылку на другом сайте, рекламные метки;</li>
+        <li>просмотренные страницы, время на сайте, клики и прокрутку;</li>
+        <li>запись сеанса (функция «Вебвизор»): как вы двигаете курсор, кликаете и прокручиваете страницу. На сайте нет полей для ввода данных.</li>
+      </ul>
+      <p>Цель: понимать, откуда приходят посетители и какие разделы им интересны, чтобы улучшать сайт. Данные используются только для статистики. Основание для обработки: ваше согласие.</p>
+      <p>Яндекс обрабатывает эти данные по своим правилам: <a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener noreferrer">yandex.ru/legal/confidential</a>. Срок хранения определяют настройки счётчика и правила Яндекса.</p>
+    </section>
+
+    <section aria-labelledby="decline">
+      <h2 id="decline">Если вы нажали «Отказаться»</h2>
+      <p>Метрика не загружается, cookie статистики не ставятся. Сайт работает так же, ничего не блокируется.</p>
+    </section>
+
+    <section aria-labelledby="change">
+      <h2 id="change">Как изменить решение</h2>
+      <p>Внизу любой страницы есть кнопка «Настройки cookie». Выбор можно поменять в любой момент. При отказе cookie Метрики удаляются из браузера. Их также можно очистить в настройках самого браузера.</p>
+    </section>
+
+    <section aria-labelledby="rights">
+      <h2 id="rights">Ваши права</h2>
+      <p>Вы можете запросить сведения о ваших данных, их исправление или удаление. Напишите мне в <a href={siteConfig.telegram} target="_blank" rel="noopener noreferrer">Telegram</a>: я отвечу и при необходимости помогу обратиться в Яндекс.</p>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .privacy { max-width:760px; padding-block:32px 72px }
+  .back-link { display:inline-flex; align-items:center; min-height:44px; font:12px var(--mono); text-decoration:underline; text-underline-offset:4px }
+  h1 { margin-top:20px; font-size:clamp(32px,4vw,52px); line-height:1.1; letter-spacing:-.04em; text-wrap:balance }
+  .updated { margin-top:12px; color:var(--muted); font:12px/1.6 var(--mono) }
+  .lead { margin-top:24px; color:var(--text); font-size:17px; line-height:1.7 }
+  section { margin-top:clamp(32px,4vw,48px); padding-top:clamp(24px,3vw,32px); border-top:1px solid var(--line) }
+  h2 { font-size:clamp(20px,2vw,26px); font-weight:550; line-height:1.25; letter-spacing:-.03em }
+  section p, section li { color:var(--secondary); font-size:15px; line-height:1.8 }
+  section p { max-width:68ch; margin-top:14px }
+  ul { margin-top:14px; padding-left:20px; list-style:disc; max-width:68ch }
+  li { margin-top:6px }
+  a:not(.back-link) { color:var(--text); text-decoration:underline; text-underline-offset:4px }
+</style>

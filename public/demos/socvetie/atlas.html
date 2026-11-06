@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Атлас цветов сезона - Соцветие</title>
+  <meta name="description" content="Демо цветочного магазина: атлас цветов по временам года, который листается как книга.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f2f5ef">
+  <link rel="icon" href="/demos/socvetie/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/demos/socvetie/assets/bona-nova-cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="/demos/socvetie/tones.js"></script>
+  <link rel="stylesheet" href="/demos/socvetie/styles.css">
+  <link rel="stylesheet" href="/demos/concept.css">
+  <script src="/demos/concept.js" defer></script>
+  <script type="module" src="/demos/socvetie/atlas.js"></script>
+</head>
+<body class="atlas-page">
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="logo" href="/demos/socvetie/index.html">Соцветие</a>
+      <nav class="nav" aria-label="Основная">
+        <a href="/demos/socvetie/catalog.html">Каталог</a>
+        <a href="/demos/socvetie/builder.html">Конструктор</a>
+        <a href="/demos/socvetie/atlas.html" aria-current="page">Атлас</a>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="atlas-bar">
+        <h1>Атлас цветов сезона</h1>
+        <div class="chapters" id="chapters" role="group" aria-label="Времена года"></div>
+      </div>
+      <div class="stage"><div class="book" id="book" aria-roledescription="книга"></div></div>
+      <div class="atlas-nav">
+        <button class="btn btn-line" type="button" id="prev">Назад</button>
+        <p class="atlas-pos" id="pos" aria-live="polite"></p>
+        <button class="btn" type="button" id="next">Дальше</button>
+      </div>
+    </main>
+  </div>
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="/demos/socvetie/index.html">Соцветие</a>
+      <div class="foot-links"><a href="mailto:hello@socvetie.example">hello@socvetie.example</a><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+    </div>
+  </footer>
+  <footer class="akhan-concept-footer"><p>Концепт-сайт. Магазин, цены, букеты и адрес доставки вымышлены, заказы не отправляются. Фото: Unsplash. Дизайн и разработка: <a href="/">akhandev</a></p></footer>
+</body>
+</html>

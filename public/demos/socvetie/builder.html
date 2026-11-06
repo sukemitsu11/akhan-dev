@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Конструктор букета - Соцветие</title>
+  <meta name="description" content="Демо цветочного магазина: соберите букет по стеблю, букет и цена меняются сразу.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f2f5ef">
+  <link rel="icon" href="/demos/socvetie/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/demos/socvetie/assets/bona-nova-cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="/demos/socvetie/tones.js"></script>
+  <link rel="stylesheet" href="/demos/socvetie/styles.css">
+  <link rel="stylesheet" href="/demos/concept.css">
+  <script src="/demos/concept.js" defer></script>
+  <script type="module" src="/demos/socvetie/builder.js"></script>
+</head>
+<body class="builder-page">
+  <a class="skip" href="#main">К содержимому</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="logo" href="/demos/socvetie/index.html">Соцветие</a>
+      <nav class="nav" aria-label="Основная">
+        <a href="/demos/socvetie/catalog.html">Каталог</a>
+        <a href="/demos/socvetie/builder.html" aria-current="page">Конструктор</a>
+        <a href="/demos/socvetie/atlas.html">Атлас</a>
+      </nav>
+    </header>
+    <main id="main" class="builder">
+      <section class="b-stage" aria-label="Ваш букет">
+        <div class="b-dome"><div id="dome"></div><p class="b-empty" id="empty">Добавьте первый цветок</p></div>
+        <div class="b-sum">
+          <div><p class="b-price" id="price"></p><p class="b-meta" id="meta"></p></div>
+          <button class="btn" type="button" id="order">Заказать</button>
+        </div>
+        <p class="b-tip" id="tip" role="status"></p>
+      </section>
+      <div class="b-side">
+        <div>
+          <h1>Соберите букет</h1>
+          <div class="presets"><span>Начать с готового:</span><span id="presets" class="presets"></span><button class="link" type="button" id="clear">Очистить</button></div>
+        </div>
+        <section class="b-group"><h2>Цветы</h2><div class="palette" id="flowers"></div></section>
+        <section class="b-group"><h2>Зелень</h2><div class="palette" id="greens"></div></section>
+        <fieldset class="b-group"><legend class="visually-hidden">Упаковка</legend><h2 aria-hidden="true">Упаковка</h2><div class="wraps" id="wraps"></div></fieldset>
+      </div>
+    </main>
+  </div>
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="/demos/socvetie/index.html">Соцветие</a>
+      <div class="foot-links"><a href="mailto:hello@socvetie.example">hello@socvetie.example</a><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+    </div>
+  </footer>
+  <footer class="akhan-concept-footer"><p>Концепт-сайт. Магазин, цены, букеты и адрес доставки вымышлены, заказы не отправляются. Фото: Unsplash. Дизайн и разработка: <a href="/">akhandev</a></p></footer>
+</body>
+</html>
